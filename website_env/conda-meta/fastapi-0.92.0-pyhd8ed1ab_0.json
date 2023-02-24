@@ -1,0 +1,650 @@
+{
+  "build": "pyhd8ed1ab_0",
+  "build_number": 0,
+  "channel": "https://conda.anaconda.org/conda-forge/noarch",
+  "constrains": [],
+  "depends": [
+    "pydantic >=1.6.2,!=1.7,!=1.7.1,!=1.7.2,!=1.7.3,!=1.8,!=1.8.1,<2.0.0",
+    "python >=3.7",
+    "starlette >=0.25.0,<0.26.0"
+  ],
+  "extracted_package_dir": "/Users/codybeck/opt/miniconda3/pkgs/fastapi-0.92.0-pyhd8ed1ab_0",
+  "features": "",
+  "files": [
+    "lib/python3.11/site-packages/fastapi-0.92.0.dist-info/INSTALLER",
+    "lib/python3.11/site-packages/fastapi-0.92.0.dist-info/METADATA",
+    "lib/python3.11/site-packages/fastapi-0.92.0.dist-info/RECORD",
+    "lib/python3.11/site-packages/fastapi-0.92.0.dist-info/REQUESTED",
+    "lib/python3.11/site-packages/fastapi-0.92.0.dist-info/WHEEL",
+    "lib/python3.11/site-packages/fastapi-0.92.0.dist-info/direct_url.json",
+    "lib/python3.11/site-packages/fastapi-0.92.0.dist-info/licenses/LICENSE",
+    "lib/python3.11/site-packages/fastapi/__init__.py",
+    "lib/python3.11/site-packages/fastapi/applications.py",
+    "lib/python3.11/site-packages/fastapi/background.py",
+    "lib/python3.11/site-packages/fastapi/concurrency.py",
+    "lib/python3.11/site-packages/fastapi/datastructures.py",
+    "lib/python3.11/site-packages/fastapi/dependencies/__init__.py",
+    "lib/python3.11/site-packages/fastapi/dependencies/models.py",
+    "lib/python3.11/site-packages/fastapi/dependencies/utils.py",
+    "lib/python3.11/site-packages/fastapi/encoders.py",
+    "lib/python3.11/site-packages/fastapi/exception_handlers.py",
+    "lib/python3.11/site-packages/fastapi/exceptions.py",
+    "lib/python3.11/site-packages/fastapi/logger.py",
+    "lib/python3.11/site-packages/fastapi/middleware/__init__.py",
+    "lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py",
+    "lib/python3.11/site-packages/fastapi/middleware/cors.py",
+    "lib/python3.11/site-packages/fastapi/middleware/gzip.py",
+    "lib/python3.11/site-packages/fastapi/middleware/httpsredirect.py",
+    "lib/python3.11/site-packages/fastapi/middleware/trustedhost.py",
+    "lib/python3.11/site-packages/fastapi/middleware/wsgi.py",
+    "lib/python3.11/site-packages/fastapi/openapi/__init__.py",
+    "lib/python3.11/site-packages/fastapi/openapi/constants.py",
+    "lib/python3.11/site-packages/fastapi/openapi/docs.py",
+    "lib/python3.11/site-packages/fastapi/openapi/models.py",
+    "lib/python3.11/site-packages/fastapi/openapi/utils.py",
+    "lib/python3.11/site-packages/fastapi/param_functions.py",
+    "lib/python3.11/site-packages/fastapi/params.py",
+    "lib/python3.11/site-packages/fastapi/py.typed",
+    "lib/python3.11/site-packages/fastapi/requests.py",
+    "lib/python3.11/site-packages/fastapi/responses.py",
+    "lib/python3.11/site-packages/fastapi/routing.py",
+    "lib/python3.11/site-packages/fastapi/security/__init__.py",
+    "lib/python3.11/site-packages/fastapi/security/api_key.py",
+    "lib/python3.11/site-packages/fastapi/security/base.py",
+    "lib/python3.11/site-packages/fastapi/security/http.py",
+    "lib/python3.11/site-packages/fastapi/security/oauth2.py",
+    "lib/python3.11/site-packages/fastapi/security/open_id_connect_url.py",
+    "lib/python3.11/site-packages/fastapi/security/utils.py",
+    "lib/python3.11/site-packages/fastapi/staticfiles.py",
+    "lib/python3.11/site-packages/fastapi/templating.py",
+    "lib/python3.11/site-packages/fastapi/testclient.py",
+    "lib/python3.11/site-packages/fastapi/types.py",
+    "lib/python3.11/site-packages/fastapi/utils.py",
+    "lib/python3.11/site-packages/fastapi/websockets.py",
+    "lib/python3.11/site-packages/fastapi/__pycache__/__init__.cpython-311.pyc",
+    "lib/python3.11/site-packages/fastapi/__pycache__/applications.cpython-311.pyc",
+    "lib/python3.11/site-packages/fastapi/__pycache__/background.cpython-311.pyc",
+    "lib/python3.11/site-packages/fastapi/__pycache__/concurrency.cpython-311.pyc",
+    "lib/python3.11/site-packages/fastapi/__pycache__/datastructures.cpython-311.pyc",
+    "lib/python3.11/site-packages/fastapi/dependencies/__pycache__/__init__.cpython-311.pyc",
+    "lib/python3.11/site-packages/fastapi/dependencies/__pycache__/models.cpython-311.pyc",
+    "lib/python3.11/site-packages/fastapi/dependencies/__pycache__/utils.cpython-311.pyc",
+    "lib/python3.11/site-packages/fastapi/__pycache__/encoders.cpython-311.pyc",
+    "lib/python3.11/site-packages/fastapi/__pycache__/exception_handlers.cpython-311.pyc",
+    "lib/python3.11/site-packages/fastapi/__pycache__/exceptions.cpython-311.pyc",
+    "lib/python3.11/site-packages/fastapi/__pycache__/logger.cpython-311.pyc",
+    "lib/python3.11/site-packages/fastapi/middleware/__pycache__/__init__.cpython-311.pyc",
+    "lib/python3.11/site-packages/fastapi/middleware/__pycache__/asyncexitstack.cpython-311.pyc",
+    "lib/python3.11/site-packages/fastapi/middleware/__pycache__/cors.cpython-311.pyc",
+    "lib/python3.11/site-packages/fastapi/middleware/__pycache__/gzip.cpython-311.pyc",
+    "lib/python3.11/site-packages/fastapi/middleware/__pycache__/httpsredirect.cpython-311.pyc",
+    "lib/python3.11/site-packages/fastapi/middleware/__pycache__/trustedhost.cpython-311.pyc",
+    "lib/python3.11/site-packages/fastapi/middleware/__pycache__/wsgi.cpython-311.pyc",
+    "lib/python3.11/site-packages/fastapi/openapi/__pycache__/__init__.cpython-311.pyc",
+    "lib/python3.11/site-packages/fastapi/openapi/__pycache__/constants.cpython-311.pyc",
+    "lib/python3.11/site-packages/fastapi/openapi/__pycache__/docs.cpython-311.pyc",
+    "lib/python3.11/site-packages/fastapi/openapi/__pycache__/models.cpython-311.pyc",
+    "lib/python3.11/site-packages/fastapi/openapi/__pycache__/utils.cpython-311.pyc",
+    "lib/python3.11/site-packages/fastapi/__pycache__/param_functions.cpython-311.pyc",
+    "lib/python3.11/site-packages/fastapi/__pycache__/params.cpython-311.pyc",
+    "lib/python3.11/site-packages/fastapi/__pycache__/requests.cpython-311.pyc",
+    "lib/python3.11/site-packages/fastapi/__pycache__/responses.cpython-311.pyc",
+    "lib/python3.11/site-packages/fastapi/__pycache__/routing.cpython-311.pyc",
+    "lib/python3.11/site-packages/fastapi/security/__pycache__/__init__.cpython-311.pyc",
+    "lib/python3.11/site-packages/fastapi/security/__pycache__/api_key.cpython-311.pyc",
+    "lib/python3.11/site-packages/fastapi/security/__pycache__/base.cpython-311.pyc",
+    "lib/python3.11/site-packages/fastapi/security/__pycache__/http.cpython-311.pyc",
+    "lib/python3.11/site-packages/fastapi/security/__pycache__/oauth2.cpython-311.pyc",
+    "lib/python3.11/site-packages/fastapi/security/__pycache__/open_id_connect_url.cpython-311.pyc",
+    "lib/python3.11/site-packages/fastapi/security/__pycache__/utils.cpython-311.pyc",
+    "lib/python3.11/site-packages/fastapi/__pycache__/staticfiles.cpython-311.pyc",
+    "lib/python3.11/site-packages/fastapi/__pycache__/templating.cpython-311.pyc",
+    "lib/python3.11/site-packages/fastapi/__pycache__/testclient.cpython-311.pyc",
+    "lib/python3.11/site-packages/fastapi/__pycache__/types.cpython-311.pyc",
+    "lib/python3.11/site-packages/fastapi/__pycache__/utils.cpython-311.pyc",
+    "lib/python3.11/site-packages/fastapi/__pycache__/websockets.cpython-311.pyc"
+  ],
+  "fn": "fastapi-0.92.0-pyhd8ed1ab_0.conda",
+  "license": "MIT",
+  "license_family": "MIT",
+  "link": {
+    "source": "/Users/codybeck/opt/miniconda3/pkgs/fastapi-0.92.0-pyhd8ed1ab_0",
+    "type": 1
+  },
+  "md5": "cf363aa45bb1820df8db4d943bd32a20",
+  "name": "fastapi",
+  "noarch": "python",
+  "package_tarball_full_path": "/Users/codybeck/opt/miniconda3/pkgs/fastapi-0.92.0-pyhd8ed1ab_0.conda",
+  "package_type": "noarch_python",
+  "paths_data": {
+    "paths": [
+      {
+        "_path": "site-packages/fastapi-0.92.0.dist-info/INSTALLER",
+        "path_type": "hardlink",
+        "sha256": "d0edee15f91b406f3f99726e44eb990be6e34fd0345b52b910c568e0eef6a2a8",
+        "sha256_in_prefix": "d0edee15f91b406f3f99726e44eb990be6e34fd0345b52b910c568e0eef6a2a8",
+        "size_in_bytes": 5
+      },
+      {
+        "_path": "site-packages/fastapi-0.92.0.dist-info/METADATA",
+        "path_type": "hardlink",
+        "sha256": "60be63970a08f95aea94bb39fe4ec6157ffb40cfcfd5b59f48304250a558036e",
+        "sha256_in_prefix": "60be63970a08f95aea94bb39fe4ec6157ffb40cfcfd5b59f48304250a558036e",
+        "size_in_bytes": 25211
+      },
+      {
+        "_path": "site-packages/fastapi-0.92.0.dist-info/RECORD",
+        "path_type": "hardlink",
+        "sha256": "592e4b94690623233f8dad3afdb9ef0b905688ca954f58dfe77089992c945ecc",
+        "sha256_in_prefix": "592e4b94690623233f8dad3afdb9ef0b905688ca954f58dfe77089992c945ecc",
+        "size_in_bytes": 6356
+      },
+      {
+        "_path": "site-packages/fastapi-0.92.0.dist-info/REQUESTED",
+        "path_type": "hardlink",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sha256_in_prefix": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_in_bytes": 0
+      },
+      {
+        "_path": "site-packages/fastapi-0.92.0.dist-info/WHEEL",
+        "path_type": "hardlink",
+        "sha256": "15dea63fac9dc9182e6a4c14274e68044edf87620fc60b4337d2301c9f4ea894",
+        "sha256_in_prefix": "15dea63fac9dc9182e6a4c14274e68044edf87620fc60b4337d2301c9f4ea894",
+        "size_in_bytes": 87
+      },
+      {
+        "_path": "site-packages/fastapi-0.92.0.dist-info/direct_url.json",
+        "path_type": "hardlink",
+        "sha256": "d19b8536a37675cbf888985b4b271f013962ee6cef01528b54d2b182f7330141",
+        "sha256_in_prefix": "d19b8536a37675cbf888985b4b271f013962ee6cef01528b54d2b182f7330141",
+        "size_in_bytes": 103
+      },
+      {
+        "_path": "site-packages/fastapi-0.92.0.dist-info/licenses/LICENSE",
+        "path_type": "hardlink",
+        "sha256": "4ec89ffc81485b97fec584b2d4a961032eeffe834453894fd9c1274906cc744e",
+        "sha256_in_prefix": "4ec89ffc81485b97fec584b2d4a961032eeffe834453894fd9c1274906cc744e",
+        "size_in_bytes": 1086
+      },
+      {
+        "_path": "site-packages/fastapi/__init__.py",
+        "path_type": "hardlink",
+        "sha256": "1459352e0c4e3dcf7074133fc79444b9e992e59c8589dfe40a13b4cca58f6991",
+        "sha256_in_prefix": "1459352e0c4e3dcf7074133fc79444b9e992e59c8589dfe40a13b4cca58f6991",
+        "size_in_bytes": 1080
+      },
+      {
+        "_path": "site-packages/fastapi/applications.py",
+        "path_type": "hardlink",
+        "sha256": "9a44331223cf38d2c6aa69efefd736f004d741364832958efac1983d56550877",
+        "sha256_in_prefix": "9a44331223cf38d2c6aa69efefd736f004d741364832958efac1983d56550877",
+        "size_in_bytes": 39361
+      },
+      {
+        "_path": "site-packages/fastapi/background.py",
+        "path_type": "hardlink",
+        "sha256": "1ed379fe9249ace75a9526ee19230a2403cd59453987bad8fc15d7b9bbbbf884",
+        "sha256_in_prefix": "1ed379fe9249ace75a9526ee19230a2403cd59453987bad8fc15d7b9bbbbf884",
+        "size_in_bytes": 76
+      },
+      {
+        "_path": "site-packages/fastapi/concurrency.py",
+        "path_type": "hardlink",
+        "sha256": "87b661646f1c122571e9a9f5b71701d912a98d6ebfc661f0168f44def5223100",
+        "sha256_in_prefix": "87b661646f1c122571e9a9f5b71701d912a98d6ebfc661f0168f44def5223100",
+        "size_in_bytes": 1468
+      },
+      {
+        "_path": "site-packages/fastapi/datastructures.py",
+        "path_type": "hardlink",
+        "sha256": "a16eb1b94d02fac0706dcc9723e32504ed2d492e0148f07695851ad720b0f3e0",
+        "sha256_in_prefix": "a16eb1b94d02fac0706dcc9723e32504ed2d492e0148f07695851ad720b0f3e0",
+        "size_in_bytes": 1905
+      },
+      {
+        "_path": "site-packages/fastapi/dependencies/__init__.py",
+        "path_type": "hardlink",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sha256_in_prefix": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_in_bytes": 0
+      },
+      {
+        "_path": "site-packages/fastapi/dependencies/models.py",
+        "path_type": "hardlink",
+        "sha256": "ccd6e2a31202b8e79bfbd0030d5438e61507382d0f06d3d511f554ddfd65fe77",
+        "sha256_in_prefix": "ccd6e2a31202b8e79bfbd0030d5438e61507382d0f06d3d511f554ddfd65fe77",
+        "size_in_bytes": 2494
+      },
+      {
+        "_path": "site-packages/fastapi/dependencies/utils.py",
+        "path_type": "hardlink",
+        "sha256": "e268f78596da639a5318ef5c7b1421c70485859654745e4d1de90907d3aa928e",
+        "sha256_in_prefix": "e268f78596da639a5318ef5c7b1421c70485859654745e4d1de90907d3aa928e",
+        "size_in_bytes": 27773
+      },
+      {
+        "_path": "site-packages/fastapi/encoders.py",
+        "path_type": "hardlink",
+        "sha256": "51a447225c72b78bd2cd5f77742233f6c2f29311f85db9a9edc00b4cad7e8679",
+        "sha256_in_prefix": "51a447225c72b78bd2cd5f77742233f6c2f29311f85db9a9edc00b4cad7e8679",
+        "size_in_bytes": 5962
+      },
+      {
+        "_path": "site-packages/fastapi/exception_handlers.py",
+        "path_type": "hardlink",
+        "sha256": "56101a6327270ee9fd59e215d6f31772ce44b8ad375e9ccc8bf1e9a80b0eff29",
+        "sha256_in_prefix": "56101a6327270ee9fd59e215d6f31772ce44b8ad375e9ccc8bf1e9a80b0eff29",
+        "size_in_bytes": 988
+      },
+      {
+        "_path": "site-packages/fastapi/exceptions.py",
+        "path_type": "hardlink",
+        "sha256": "fd844d25ce59a48f104266c97b8a2986c46772ceec2226dcd6d1360271c770a7",
+        "sha256_in_prefix": "fd844d25ce59a48f104266c97b8a2986c46772ceec2226dcd6d1360271c770a7",
+        "size_in_bytes": 1205
+      },
+      {
+        "_path": "site-packages/fastapi/logger.py",
+        "path_type": "hardlink",
+        "sha256": "23d34d8b7a2ff0072a6ec6c2f709755fe85d22d2a062dd974ebc757fdf59a65e",
+        "sha256_in_prefix": "23d34d8b7a2ff0072a6ec6c2f709755fe85d22d2a062dd974ebc757fdf59a65e",
+        "size_in_bytes": 54
+      },
+      {
+        "_path": "site-packages/fastapi/middleware/__init__.py",
+        "path_type": "hardlink",
+        "sha256": "a100f188555c7357d825438816fa619caee94d3e6492d99f2f7d905e9045befa",
+        "sha256_in_prefix": "a100f188555c7357d825438816fa619caee94d3e6492d99f2f7d905e9045befa",
+        "size_in_bytes": 58
+      },
+      {
+        "_path": "site-packages/fastapi/middleware/asyncexitstack.py",
+        "path_type": "hardlink",
+        "sha256": "ef65e342643fb41fed4ecf7139cd1a91717fed3c1950f7727dcf20b0de4b57c1",
+        "sha256_in_prefix": "ef65e342643fb41fed4ecf7139cd1a91717fed3c1950f7727dcf20b0de4b57c1",
+        "size_in_bytes": 1197
+      },
+      {
+        "_path": "site-packages/fastapi/middleware/cors.py",
+        "path_type": "hardlink",
+        "sha256": "ca7c2359066873fbdb873677fd95dc7a8692aec9471473dda0ce76ad7af45945",
+        "sha256_in_prefix": "ca7c2359066873fbdb873677fd95dc7a8692aec9471473dda0ce76ad7af45945",
+        "size_in_bytes": 79
+      },
+      {
+        "_path": "site-packages/fastapi/middleware/gzip.py",
+        "path_type": "hardlink",
+        "sha256": "c4ce4f72c1fc425022999c38543bdc9939ea41a9ac95386c7dedc254ddafa1ad",
+        "sha256_in_prefix": "c4ce4f72c1fc425022999c38543bdc9939ea41a9ac95386c7dedc254ddafa1ad",
+        "size_in_bytes": 79
+      },
+      {
+        "_path": "site-packages/fastapi/middleware/httpsredirect.py",
+        "path_type": "hardlink",
+        "sha256": "acbf1e5cc9e62e28f05641fbff8d34cc7ae2d407a47de05de83eaab3c8b1f79d",
+        "sha256_in_prefix": "acbf1e5cc9e62e28f05641fbff8d34cc7ae2d407a47de05de83eaab3c8b1f79d",
+        "size_in_bytes": 115
+      },
+      {
+        "_path": "site-packages/fastapi/middleware/trustedhost.py",
+        "path_type": "hardlink",
+        "sha256": "784e57191c466bb739ccf9cc2431a9dc1c5a2f6e64e625509619eff8f9343ecb",
+        "sha256_in_prefix": "784e57191c466bb739ccf9cc2431a9dc1c5a2f6e64e625509619eff8f9343ecb",
+        "size_in_bytes": 109
+      },
+      {
+        "_path": "site-packages/fastapi/middleware/wsgi.py",
+        "path_type": "hardlink",
+        "sha256": "67751efbbc278b895464cbc7dc6f5e93ffda72061d26cb5b9e9657fc74006e86",
+        "sha256_in_prefix": "67751efbbc278b895464cbc7dc6f5e93ffda72061d26cb5b9e9657fc74006e86",
+        "size_in_bytes": 79
+      },
+      {
+        "_path": "site-packages/fastapi/openapi/__init__.py",
+        "path_type": "hardlink",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sha256_in_prefix": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_in_bytes": 0
+      },
+      {
+        "_path": "site-packages/fastapi/openapi/constants.py",
+        "path_type": "hardlink",
+        "sha256": "996c58063103e8f53eb50f57db6ed092ad92b16d9cbfe0b58d814ab7adf1c44b",
+        "sha256_in_prefix": "996c58063103e8f53eb50f57db6ed092ad92b16d9cbfe0b58d814ab7adf1c44b",
+        "size_in_bytes": 107
+      },
+      {
+        "_path": "site-packages/fastapi/openapi/docs.py",
+        "path_type": "hardlink",
+        "sha256": "24145aabb10499e0bec684524458faa99590c5f3995bf8ef4f0d2bf8f88a719e",
+        "sha256_in_prefix": "24145aabb10499e0bec684524458faa99590c5f3995bf8ef4f0d2bf8f88a719e",
+        "size_in_bytes": 6532
+      },
+      {
+        "_path": "site-packages/fastapi/openapi/models.py",
+        "path_type": "hardlink",
+        "sha256": "fd7583054e19969e4cf55e982359265dba982b02bfc59c5aa8803f0e12f0a879",
+        "sha256_in_prefix": "fd7583054e19969e4cf55e982359265dba982b02bfc59c5aa8803f0e12f0a879",
+        "size_in_bytes": 11027
+      },
+      {
+        "_path": "site-packages/fastapi/openapi/utils.py",
+        "path_type": "hardlink",
+        "sha256": "0e823faf03fcc1ea544ec48279a0867d72ee1a6ed0edd941a8c6ce93163293d6",
+        "sha256_in_prefix": "0e823faf03fcc1ea544ec48279a0867d72ee1a6ed0edd941a8c6ce93163293d6",
+        "size_in_bytes": 18808
+      },
+      {
+        "_path": "site-packages/fastapi/param_functions.py",
+        "path_type": "hardlink",
+        "sha256": "9a157a68d6665ee7ff03bad9f37d28dd5f8316a6e89c80d1b3fa6b0d37ad2ece",
+        "sha256_in_prefix": "9a157a68d6665ee7ff03bad9f37d28dd5f8316a6e89c80d1b3fa6b0d37ad2ece",
+        "size_in_bytes": 7521
+      },
+      {
+        "_path": "site-packages/fastapi/params.py",
+        "path_type": "hardlink",
+        "sha256": "2d1a0ed87d5704121f04607cda01ed7e75e10d9883cfeec2228add3771685352",
+        "sha256_in_prefix": "2d1a0ed87d5704121f04607cda01ed7e75e10d9883cfeec2228add3771685352",
+        "size_in_bytes": 10600
+      },
+      {
+        "_path": "site-packages/fastapi/py.typed",
+        "path_type": "hardlink",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sha256_in_prefix": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_in_bytes": 0
+      },
+      {
+        "_path": "site-packages/fastapi/requests.py",
+        "path_type": "hardlink",
+        "sha256": "cdac9ea4a15c89e9c1965bf7b27996236d06934a073552d4e030e1a9705be0b5",
+        "sha256_in_prefix": "cdac9ea4a15c89e9c1965bf7b27996236d06934a073552d4e030e1a9705be0b5",
+        "size_in_bytes": 142
+      },
+      {
+        "_path": "site-packages/fastapi/responses.py",
+        "path_type": "hardlink",
+        "sha256": "ffed98b8bd8f581d16715526f93d1b2736e8d9997fbfc9fa5c06af0146301e3b",
+        "sha256_in_prefix": "ffed98b8bd8f581d16715526f93d1b2736e8d9997fbfc9fa5c06af0146301e3b",
+        "size_in_bytes": 1279
+      },
+      {
+        "_path": "site-packages/fastapi/routing.py",
+        "path_type": "hardlink",
+        "sha256": "107c6f2a8106d53c82f2ac302b39b1f694de412a236ddf1d65ff186e15d1ef08",
+        "sha256_in_prefix": "107c6f2a8106d53c82f2ac302b39b1f694de412a236ddf1d65ff186e15d1ef08",
+        "size_in_bytes": 55317
+      },
+      {
+        "_path": "site-packages/fastapi/security/__init__.py",
+        "path_type": "hardlink",
+        "sha256": "6cef29366c6a5515d48df97698e2a25592e7d05a4143ad555185639a9a676c9c",
+        "sha256_in_prefix": "6cef29366c6a5515d48df97698e2a25592e7d05a4143ad555185639a9a676c9c",
+        "size_in_bytes": 881
+      },
+      {
+        "_path": "site-packages/fastapi/security/api_key.py",
+        "path_type": "hardlink",
+        "sha256": "e8e3fe2005c5f8e9683b861b0825e057310123becc2a23f320ebb0c22d30b263",
+        "sha256_in_prefix": "e8e3fe2005c5f8e9683b861b0825e057310123becc2a23f320ebb0c22d30b263",
+        "size_in_bytes": 2783
+      },
+      {
+        "_path": "site-packages/fastapi/security/base.py",
+        "path_type": "hardlink",
+        "sha256": "765e29bdb0be4718df6d680fb4259df0c554fbb081d92676dab2435d50973ba7",
+        "sha256_in_prefix": "765e29bdb0be4718df6d680fb4259df0c554fbb081d92676dab2435d50973ba7",
+        "size_in_bytes": 141
+      },
+      {
+        "_path": "site-packages/fastapi/security/http.py",
+        "path_type": "hardlink",
+        "sha256": "723cf058103f4965e4cbc22b6fb95a747a614793f9080801bf76e39854adba03",
+        "sha256_in_prefix": "723cf058103f4965e4cbc22b6fb95a747a614793f9080801bf76e39854adba03",
+        "size_in_bytes": 5964
+      },
+      {
+        "_path": "site-packages/fastapi/security/oauth2.py",
+        "path_type": "hardlink",
+        "sha256": "4358669833acadd0272686be10e9e4164b942190912a0ad5d4e0b04c3a072060",
+        "sha256_in_prefix": "4358669833acadd0272686be10e9e4164b942190912a0ad5d4e0b04c3a072060",
+        "size_in_bytes": 8197
+      },
+      {
+        "_path": "site-packages/fastapi/security/open_id_connect_url.py",
+        "path_type": "hardlink",
+        "sha256": "1d8be3cb865fb01cf39e8ed293e2fa97f525825cb7841489f5acf0dfc4b06a8d",
+        "sha256_in_prefix": "1d8be3cb865fb01cf39e8ed293e2fa97f525825cb7841489f5acf0dfc4b06a8d",
+        "size_in_bytes": 1140
+      },
+      {
+        "_path": "site-packages/fastapi/security/utils.py",
+        "path_type": "hardlink",
+        "sha256": "6ddf13d1833b5100f90132ae72bd5b36d02fcff637fff755340bf951e6e23ef7",
+        "sha256_in_prefix": "6ddf13d1833b5100f90132ae72bd5b36d02fcff637fff755340bf951e6e23ef7",
+        "size_in_bytes": 293
+      },
+      {
+        "_path": "site-packages/fastapi/staticfiles.py",
+        "path_type": "hardlink",
+        "sha256": "8a2ac622ddec758d90657777ea28ecdc28fe4f416e18575addc77dd2433d224c",
+        "sha256_in_prefix": "8a2ac622ddec758d90657777ea28ecdc28fe4f416e18575addc77dd2433d224c",
+        "size_in_bytes": 69
+      },
+      {
+        "_path": "site-packages/fastapi/templating.py",
+        "path_type": "hardlink",
+        "sha256": "e33b2e4d681c8dc11a8a7309140956ebe827b259ba020392d528a20d67e64319",
+        "sha256_in_prefix": "e33b2e4d681c8dc11a8a7309140956ebe827b259ba020392d528a20d67e64319",
+        "size_in_bytes": 76
+      },
+      {
+        "_path": "site-packages/fastapi/testclient.py",
+        "path_type": "hardlink",
+        "sha256": "9c1bda0265fae9895d45e24d6573ce935b1fba8d90ea1b3c6cebc86827a9e8b4",
+        "sha256_in_prefix": "9c1bda0265fae9895d45e24d6573ce935b1fba8d90ea1b3c6cebc86827a9e8b4",
+        "size_in_bytes": 66
+      },
+      {
+        "_path": "site-packages/fastapi/types.py",
+        "path_type": "hardlink",
+        "sha256": "afa3278131f391938ff65cd781dba37bdc9e65ee44227580cc22ee44996122e1",
+        "sha256_in_prefix": "afa3278131f391938ff65cd781dba37bdc9e65ee44227580cc22ee44996122e1",
+        "size_in_bytes": 118
+      },
+      {
+        "_path": "site-packages/fastapi/utils.py",
+        "path_type": "hardlink",
+        "sha256": "9f9c7c8451578bc274658813aecfaa7d2a0987e9cae17d2ec44061229695a3ed",
+        "sha256_in_prefix": "9f9c7c8451578bc274658813aecfaa7d2a0987e9cae17d2ec44061229695a3ed",
+        "size_in_bytes": 7371
+      },
+      {
+        "_path": "site-packages/fastapi/websockets.py",
+        "path_type": "hardlink",
+        "sha256": "e35f6e9dc60e6c42991b461cad7b1c7d04182d25a8135d23ab154c7ad19d47df",
+        "sha256_in_prefix": "e35f6e9dc60e6c42991b461cad7b1c7d04182d25a8135d23ab154c7ad19d47df",
+        "size_in_bytes": 222
+      },
+      {
+        "_path": "lib/python3.11/site-packages/fastapi/__pycache__/__init__.cpython-311.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.11/site-packages/fastapi/__pycache__/applications.cpython-311.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.11/site-packages/fastapi/__pycache__/background.cpython-311.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.11/site-packages/fastapi/__pycache__/concurrency.cpython-311.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.11/site-packages/fastapi/__pycache__/datastructures.cpython-311.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.11/site-packages/fastapi/dependencies/__pycache__/__init__.cpython-311.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.11/site-packages/fastapi/dependencies/__pycache__/models.cpython-311.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.11/site-packages/fastapi/dependencies/__pycache__/utils.cpython-311.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.11/site-packages/fastapi/__pycache__/encoders.cpython-311.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.11/site-packages/fastapi/__pycache__/exception_handlers.cpython-311.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.11/site-packages/fastapi/__pycache__/exceptions.cpython-311.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.11/site-packages/fastapi/__pycache__/logger.cpython-311.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.11/site-packages/fastapi/middleware/__pycache__/__init__.cpython-311.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.11/site-packages/fastapi/middleware/__pycache__/asyncexitstack.cpython-311.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.11/site-packages/fastapi/middleware/__pycache__/cors.cpython-311.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.11/site-packages/fastapi/middleware/__pycache__/gzip.cpython-311.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.11/site-packages/fastapi/middleware/__pycache__/httpsredirect.cpython-311.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.11/site-packages/fastapi/middleware/__pycache__/trustedhost.cpython-311.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.11/site-packages/fastapi/middleware/__pycache__/wsgi.cpython-311.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.11/site-packages/fastapi/openapi/__pycache__/__init__.cpython-311.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.11/site-packages/fastapi/openapi/__pycache__/constants.cpython-311.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.11/site-packages/fastapi/openapi/__pycache__/docs.cpython-311.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.11/site-packages/fastapi/openapi/__pycache__/models.cpython-311.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.11/site-packages/fastapi/openapi/__pycache__/utils.cpython-311.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.11/site-packages/fastapi/__pycache__/param_functions.cpython-311.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.11/site-packages/fastapi/__pycache__/params.cpython-311.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.11/site-packages/fastapi/__pycache__/requests.cpython-311.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.11/site-packages/fastapi/__pycache__/responses.cpython-311.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.11/site-packages/fastapi/__pycache__/routing.cpython-311.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.11/site-packages/fastapi/security/__pycache__/__init__.cpython-311.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.11/site-packages/fastapi/security/__pycache__/api_key.cpython-311.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.11/site-packages/fastapi/security/__pycache__/base.cpython-311.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.11/site-packages/fastapi/security/__pycache__/http.cpython-311.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.11/site-packages/fastapi/security/__pycache__/oauth2.cpython-311.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.11/site-packages/fastapi/security/__pycache__/open_id_connect_url.cpython-311.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.11/site-packages/fastapi/security/__pycache__/utils.cpython-311.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.11/site-packages/fastapi/__pycache__/staticfiles.cpython-311.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.11/site-packages/fastapi/__pycache__/templating.cpython-311.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.11/site-packages/fastapi/__pycache__/testclient.cpython-311.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.11/site-packages/fastapi/__pycache__/types.cpython-311.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.11/site-packages/fastapi/__pycache__/utils.cpython-311.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.11/site-packages/fastapi/__pycache__/websockets.cpython-311.pyc",
+        "path_type": "pyc_file"
+      }
+    ],
+    "paths_version": 1
+  },
+  "requested_spec": "fastapi",
+  "sha256": "c0e9c328077c54e720a6c15b853ec3d08136c78a53869defacef5e920f921579",
+  "size": 48551,
+  "subdir": "noarch",
+  "timestamp": 1676407638949,
+  "track_features": "",
+  "url": "https://conda.anaconda.org/conda-forge/noarch/fastapi-0.92.0-pyhd8ed1ab_0.conda",
+  "version": "0.92.0"
+}

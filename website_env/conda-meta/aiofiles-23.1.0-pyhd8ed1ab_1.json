@@ -1,0 +1,224 @@
+{
+  "build": "pyhd8ed1ab_1",
+  "build_number": 1,
+  "channel": "https://conda.anaconda.org/conda-forge/noarch",
+  "constrains": [],
+  "depends": [
+    "python >=3.7"
+  ],
+  "extracted_package_dir": "/Users/codybeck/opt/miniconda3/pkgs/aiofiles-23.1.0-pyhd8ed1ab_1",
+  "features": "",
+  "files": [
+    "lib/python3.11/site-packages/aiofiles-23.1.0.dist-info/INSTALLER",
+    "lib/python3.11/site-packages/aiofiles-23.1.0.dist-info/LICENSE",
+    "lib/python3.11/site-packages/aiofiles-23.1.0.dist-info/METADATA",
+    "lib/python3.11/site-packages/aiofiles-23.1.0.dist-info/RECORD",
+    "lib/python3.11/site-packages/aiofiles-23.1.0.dist-info/REQUESTED",
+    "lib/python3.11/site-packages/aiofiles-23.1.0.dist-info/WHEEL",
+    "lib/python3.11/site-packages/aiofiles-23.1.0.dist-info/direct_url.json",
+    "lib/python3.11/site-packages/aiofiles/__init__.py",
+    "lib/python3.11/site-packages/aiofiles/base.py",
+    "lib/python3.11/site-packages/aiofiles/os.py",
+    "lib/python3.11/site-packages/aiofiles/ospath.py",
+    "lib/python3.11/site-packages/aiofiles/tempfile/__init__.py",
+    "lib/python3.11/site-packages/aiofiles/tempfile/temptypes.py",
+    "lib/python3.11/site-packages/aiofiles/threadpool/__init__.py",
+    "lib/python3.11/site-packages/aiofiles/threadpool/binary.py",
+    "lib/python3.11/site-packages/aiofiles/threadpool/text.py",
+    "lib/python3.11/site-packages/aiofiles/threadpool/utils.py",
+    "lib/python3.11/site-packages/aiofiles/__pycache__/__init__.cpython-311.pyc",
+    "lib/python3.11/site-packages/aiofiles/__pycache__/base.cpython-311.pyc",
+    "lib/python3.11/site-packages/aiofiles/__pycache__/os.cpython-311.pyc",
+    "lib/python3.11/site-packages/aiofiles/__pycache__/ospath.cpython-311.pyc",
+    "lib/python3.11/site-packages/aiofiles/tempfile/__pycache__/__init__.cpython-311.pyc",
+    "lib/python3.11/site-packages/aiofiles/tempfile/__pycache__/temptypes.cpython-311.pyc",
+    "lib/python3.11/site-packages/aiofiles/threadpool/__pycache__/__init__.cpython-311.pyc",
+    "lib/python3.11/site-packages/aiofiles/threadpool/__pycache__/binary.cpython-311.pyc",
+    "lib/python3.11/site-packages/aiofiles/threadpool/__pycache__/text.cpython-311.pyc",
+    "lib/python3.11/site-packages/aiofiles/threadpool/__pycache__/utils.cpython-311.pyc"
+  ],
+  "fn": "aiofiles-23.1.0-pyhd8ed1ab_1.conda",
+  "license": "Apache-2.0",
+  "license_family": "Apache",
+  "link": {
+    "source": "/Users/codybeck/opt/miniconda3/pkgs/aiofiles-23.1.0-pyhd8ed1ab_1",
+    "type": 1
+  },
+  "md5": "4e0624567be59edd7d0fec20db4d7a9c",
+  "name": "aiofiles",
+  "noarch": "python",
+  "package_tarball_full_path": "/Users/codybeck/opt/miniconda3/pkgs/aiofiles-23.1.0-pyhd8ed1ab_1.conda",
+  "package_type": "noarch_python",
+  "paths_data": {
+    "paths": [
+      {
+        "_path": "site-packages/aiofiles-23.1.0.dist-info/INSTALLER",
+        "path_type": "hardlink",
+        "sha256": "d0edee15f91b406f3f99726e44eb990be6e34fd0345b52b910c568e0eef6a2a8",
+        "sha256_in_prefix": "d0edee15f91b406f3f99726e44eb990be6e34fd0345b52b910c568e0eef6a2a8",
+        "size_in_bytes": 5
+      },
+      {
+        "_path": "site-packages/aiofiles-23.1.0.dist-info/LICENSE",
+        "path_type": "hardlink",
+        "sha256": "cb5e8e7e5f4a3988e1063c142c60dc2df75605f4c46515e776e3aca6df976e14",
+        "sha256_in_prefix": "cb5e8e7e5f4a3988e1063c142c60dc2df75605f4c46515e776e3aca6df976e14",
+        "size_in_bytes": 11325
+      },
+      {
+        "_path": "site-packages/aiofiles-23.1.0.dist-info/METADATA",
+        "path_type": "hardlink",
+        "sha256": "ce35071d1fa8cf0520ec128f4d616ce857bf2d29be20bc79354bc3a44ee6f08f",
+        "sha256_in_prefix": "ce35071d1fa8cf0520ec128f4d616ce857bf2d29be20bc79354bc3a44ee6f08f",
+        "size_in_bytes": 8972
+      },
+      {
+        "_path": "site-packages/aiofiles-23.1.0.dist-info/RECORD",
+        "path_type": "hardlink",
+        "sha256": "98b9d597e733f52ea36fbe4b98e505706150e8a3cd07bc20c09247e05b5e7bbe",
+        "sha256_in_prefix": "98b9d597e733f52ea36fbe4b98e505706150e8a3cd07bc20c09247e05b5e7bbe",
+        "size_in_bytes": 1936
+      },
+      {
+        "_path": "site-packages/aiofiles-23.1.0.dist-info/REQUESTED",
+        "path_type": "hardlink",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sha256_in_prefix": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_in_bytes": 0
+      },
+      {
+        "_path": "site-packages/aiofiles-23.1.0.dist-info/WHEEL",
+        "path_type": "hardlink",
+        "sha256": "90bb84f26d56614d08834fd8106ad7c93b6226f28fa4ba431220a188dc9e8b96",
+        "sha256_in_prefix": "90bb84f26d56614d08834fd8106ad7c93b6226f28fa4ba431220a188dc9e8b96",
+        "size_in_bytes": 88
+      },
+      {
+        "_path": "site-packages/aiofiles-23.1.0.dist-info/direct_url.json",
+        "path_type": "hardlink",
+        "sha256": "216be4c7429eac98ab4155dc53ad593eea87a79b66ab2fc846776a1c35979dcf",
+        "sha256_in_prefix": "216be4c7429eac98ab4155dc53ad593eea87a79b66ab2fc846776a1c35979dcf",
+        "size_in_bytes": 104
+      },
+      {
+        "_path": "site-packages/aiofiles/__init__.py",
+        "path_type": "hardlink",
+        "sha256": "d6200c250c89b57dcb1884b402815325e3b5689fd12b68e905206183456822b1",
+        "sha256_in_prefix": "d6200c250c89b57dcb1884b402815325e3b5689fd12b68e905206183456822b1",
+        "size_in_bytes": 344
+      },
+      {
+        "_path": "site-packages/aiofiles/base.py",
+        "path_type": "hardlink",
+        "sha256": "1c5c8555fcea80673b3e4ac4b500034631b5fb403ac96426a43f335eca1604ac",
+        "sha256_in_prefix": "1c5c8555fcea80673b3e4ac4b500034631b5fb403ac96426a43f335eca1604ac",
+        "size_in_bytes": 2586
+      },
+      {
+        "_path": "site-packages/aiofiles/os.py",
+        "path_type": "hardlink",
+        "sha256": "a12c3ffa31d1fafee3a4e1b002b9d244df668056d2d255f26810b36df498bff3",
+        "sha256_in_prefix": "a12c3ffa31d1fafee3a4e1b002b9d244df668056d2d255f26810b36df498bff3",
+        "size_in_bytes": 929
+      },
+      {
+        "_path": "site-packages/aiofiles/ospath.py",
+        "path_type": "hardlink",
+        "sha256": "78e2b13bb4e59fe54974487a2720c9017176e6b12b4f9ca237b7cb736a269efd",
+        "sha256_in_prefix": "78e2b13bb4e59fe54974487a2720c9017176e6b12b4f9ca237b7cb736a269efd",
+        "size_in_bytes": 414
+      },
+      {
+        "_path": "site-packages/aiofiles/tempfile/__init__.py",
+        "path_type": "hardlink",
+        "sha256": "6b7dc32db405b05d0e1dc03c7815c6cafb86aad0817d3cff244c33d14b921797",
+        "sha256_in_prefix": "6b7dc32db405b05d0e1dc03c7815c6cafb86aad0817d3cff244c33d14b921797",
+        "size_in_bytes": 7240
+      },
+      {
+        "_path": "site-packages/aiofiles/tempfile/temptypes.py",
+        "path_type": "hardlink",
+        "sha256": "8619c74c0c08693e67df20df3fca57322f67015fb6e6332cb0e9498f2bf56e6e",
+        "sha256_in_prefix": "8619c74c0c08693e67df20df3fca57322f67015fb6e6332cb0e9498f2bf56e6e",
+        "size_in_bytes": 2151
+      },
+      {
+        "_path": "site-packages/aiofiles/threadpool/__init__.py",
+        "path_type": "hardlink",
+        "sha256": "fde94426be1be99b9004a5930319bc62726bb366500ec69769ca4b138c5e2e34",
+        "sha256_in_prefix": "fde94426be1be99b9004a5930319bc62726bb366500ec69769ca4b138c5e2e34",
+        "size_in_bytes": 3198
+      },
+      {
+        "_path": "site-packages/aiofiles/threadpool/binary.py",
+        "path_type": "hardlink",
+        "sha256": "1c7a553bf3cc26929bdc2a263ad4e6a78a166ce19f3ec2eff234ab362e3b6eb8",
+        "sha256_in_prefix": "1c7a553bf3cc26929bdc2a263ad4e6a78a166ce19f3ec2eff234ab362e3b6eb8",
+        "size_in_bytes": 2332
+      },
+      {
+        "_path": "site-packages/aiofiles/threadpool/text.py",
+        "path_type": "hardlink",
+        "sha256": "6da5e93eee89ade3dde63fe431642d1db924fa9dd7fedd92b723cd30a40214d4",
+        "sha256_in_prefix": "6da5e93eee89ade3dde63fe431642d1db924fa9dd7fedd92b723cd30a40214d4",
+        "size_in_bytes": 1240
+      },
+      {
+        "_path": "site-packages/aiofiles/threadpool/utils.py",
+        "path_type": "hardlink",
+        "sha256": "7dcaaf441adc224daa3feace766f76cc31f209f803ea2b52eb6d55ea838b2709",
+        "sha256_in_prefix": "7dcaaf441adc224daa3feace766f76cc31f209f803ea2b52eb6d55ea838b2709",
+        "size_in_bytes": 1912
+      },
+      {
+        "_path": "lib/python3.11/site-packages/aiofiles/__pycache__/__init__.cpython-311.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.11/site-packages/aiofiles/__pycache__/base.cpython-311.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.11/site-packages/aiofiles/__pycache__/os.cpython-311.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.11/site-packages/aiofiles/__pycache__/ospath.cpython-311.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.11/site-packages/aiofiles/tempfile/__pycache__/__init__.cpython-311.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.11/site-packages/aiofiles/tempfile/__pycache__/temptypes.cpython-311.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.11/site-packages/aiofiles/threadpool/__pycache__/__init__.cpython-311.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.11/site-packages/aiofiles/threadpool/__pycache__/binary.cpython-311.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.11/site-packages/aiofiles/threadpool/__pycache__/text.cpython-311.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.11/site-packages/aiofiles/threadpool/__pycache__/utils.cpython-311.pyc",
+        "path_type": "pyc_file"
+      }
+    ],
+    "paths_version": 1
+  },
+  "requested_spec": "aiofiles",
+  "sha256": "76f4a3bedd87897b5d33be777035087c47416550a6e7329d4710248dcfa4700e",
+  "size": 18288,
+  "subdir": "noarch",
+  "timestamp": 1677173480429,
+  "track_features": "",
+  "url": "https://conda.anaconda.org/conda-forge/noarch/aiofiles-23.1.0-pyhd8ed1ab_1.conda",
+  "version": "23.1.0"
+}

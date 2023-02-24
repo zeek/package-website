@@ -3,6 +3,7 @@ channels:
   - conda-forge
 dependencies:
   - fastapi
+  - joblib
   - uvicorn
   - requests
   - python-dotenv

@@ -13,16 +13,15 @@ jobs:
         uses: peter-evans/autopep8@v2
         with:
           args: --recursive --in-place --aggressive --aggressive .
-
-  merge:
-    needs: [autopep8]
-    uses: peter-evans/create-pull-request@v3
-    with:
-      commit-message: autopep8 action changes
-      title: PEP8 Format Fixes
-      body: This is an auto-generated PR with format fixes.
-      labels: autopep8
-      reviewers: akielaries
-      branch: CICD
+    
+      - name: Create PR
+        uses: peter-evans/create-pull-request@v3
+        with:
+          commit-message: autopep8 action changes
+          title: PEP8 Format Fixes
+          body: This is an auto-generated PR with format fixes.
+          labels: autopep8
+          reviewers: akielaries
+          branch: CICD
 
 

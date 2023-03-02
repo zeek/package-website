@@ -40,9 +40,12 @@ jobs:
       - name: Create PR
         uses: peter-evans/create-pull-request@v3
         with:
-          token: ${{ secrets.ZEEK_BOT_TOKEN }}
+          #token: ${{ secrets.ZEEK_BOT_TOKEN }}
+          author: zeek-bot <info@zeek.org>
+          committer: zeek-bot <info@zeek.org>
           commit-message: autopep8 action changes
           title: PEP8 Format Fixes
+          signoff: false
           body: This is an auto-generated PR with format fixes.
           labels: autopep8
           reviewers: akielaries

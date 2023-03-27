@@ -1,5 +1,6 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse
+from fastapi.templating import Jinja2Templates
 
 # from api.routes.api import router as api_router
 # from core.events import create_start_app_handler
@@ -16,20 +17,23 @@ from fastapi.responses import HTMLResponse
 
 
 # app = get_application()
+
 app = FastAPI()
+templates = Jinja2Templates(directory="templates")
 
 
-@app.get("/")
-async def home():
+@app.get("/", response_class=HTMLResponse)
+async def home(request: Request):
     data = {
-        "text": "hi"
+        "text": "Hello World!"
     }
-    return {"data": data}
+    return templates.TemplateResponse("index.html", {"request": request, "data": data})
 
 
-@app.get("/page/{page_name}")
-async def page(page_name: str):
+# example created a dynamic page based on page name, this can be modified for our packages
+@app.get("/packages/{package_name}", response_class=HTMLResponse)
+async def package(request: Request, package_name: str):
     data = {
-        "page": page_name
+        "package": package_name
     }
-    return {"data": data}
+    return templates.TemplateResponse("page.html", {"request": request, "data": data})

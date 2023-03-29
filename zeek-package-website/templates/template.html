@@ -2,9 +2,14 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <meta http-equic="X-UA'Compatible" content="IE=edge" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, inital-scale=1.0" />
+        <meta name="author" content="Zeek Asset Manager" />
+        <meta name="description" content="A Package Manager for Zeek and Zeek Script" />
         <title>{% block title %}{% endblock %}</title>
+
+        <!--Custom CSS Scripts-->
+        <link href="{{ url_for("static", path="/css/style.css") }}" rel="stylesheet" />
     </head>
     <body>
         {% include "include/nav.html" %}

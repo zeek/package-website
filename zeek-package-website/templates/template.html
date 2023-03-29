@@ -7,9 +7,11 @@
         <title>{% block title %}{% endblock %}</title>
     </head>
     <body>
-        {% include "nav.html" %}
+        {% include "include/nav.html" %}
 
         {% block content %}
         {% endblock %}
+
+        {% include "include/footer.html" %}
     </body>
 </html>

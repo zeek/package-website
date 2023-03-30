@@ -7,6 +7,10 @@ Parser utility for scraping values from aggragate.meta
 #
 # * FIXME misc. key/val pairs that are not as common... look thru
 #       aggragate.meta file pkg by pkg to see what is left to scrape
+#
+# * FIXME move functions that use the same REGEX to a commmon
+#       REGEX function. this will eliminate duplicated code
+
 import re
 
 

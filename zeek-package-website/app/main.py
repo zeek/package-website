@@ -23,4 +23,4 @@ async def package(request: Request, package_name: str):
     data = {
         "package": package_name
     }
-    return templates.TemplateResponse("page.html", {"request": request, "data": data})
+    return templates.TemplateResponse("package-info.html", {"request": request, "data": data})

@@ -24,6 +24,7 @@ class Parse:
         """
         with open(file, 'r') as f:
             self.contents = f.read()
+
         self.section_count = None   # number of packages
         self.section_header = None  # pkg names
         self.author = None          # pkg author/credits
@@ -60,17 +61,18 @@ class Parse:
             self.section_header = re.search(
                 r'\[[^/^].*?\/[^[]*?\]', header).group(0)
             # extract our desired fields
-            self.author = self.get_author(header)
-            self.description = self.get_desc(header)
-            self.tags = self.get_tags(header)
-            self.version = self.get_version(header)
-            self.depends = self.get_depends(header)
-            self.test_cmd = self.get_test_cmd(header)
-            self.build_cmd = self.get_build_cmd(header)
-            self.url = self.get_url(header)
-            self.summary = self.get_summary(header)
-            self.script_dir = self.get_script_dir(header)
-            self.plugin_dir = self.get_plugin_dir(header)
+            # TODO: pass in header + text to look for
+            self.author = self.get_line("credits", header)
+            self.description = self.get_line("description", header)
+            self.tags = self.get_line("tags", header)
+            self.version = self.get_line("version", header)
+            self.depends = self.get_next("depends", header)
+            self.test_cmd = self.get_line("test_command", header)
+            self.build_cmd = self.get_line("build_command", header)
+            self.url = self.get_line("url", header)
+            self.summary = self.get_line("summary", header)
+            self.script_dir = self.get_line("script_dir", header)
+            self.plugin_dir = self.get_line("plugin_dir", header)
 
             # yield the fields we retrieved
             yield (self.section_header,
@@ -99,69 +101,32 @@ class Parse:
             r'\[[^/^][^[]*?\/[^[]*?\][^[]*',
             self.contents,
             flags=re.DOTALL)
+
         return headers
 
-    def get_author(self, header):
+    def get_line(self, text, header) -> str:
         """
-        @brief Extracts the author/credits from a given section header.
+        @brief Extracts a specified text field from a given section header.
+        Catches values on the same line after {text} =
         @param self: A reference to the current object.
         @param header: The section header to search for the author/credits field.
         @return: The author/credits value found in the header, or None if not found.
         """
-        author_match = re.search(
-            r'^credits\s*=\s*(.+)', header, flags=re.MULTILINE)
-        if author_match:
-            author = author_match.group(1)
-        else:
-            author = None
-        return author
+        # generic regular expression
+        reg = (r'^{text}\s*=\s*(.+)', text)
+        regex_match = re.search(
+            rf'^{text}\s*=\s*(.+)',
+            header,
+            flags=re.MULTILINE)
 
-    def get_desc(self, header):
-        """
-        @brief Extracts the description from a given section header.
-        @param self: A reference to the current object.
-        @param header: The section header to search for the description field.
-        @return: The description value found in the header, or None if not found.
-        """
-        description_match = re.search(
-            r'^description\s*=\s*(.+)', header, flags=re.MULTILINE)
-        if description_match:
-            description = description_match.group(1)
+        if regex_match:
+            same_line = regex_match.group(1)
         else:
-            description = None
-        return description
+            same_line = None
 
-    def get_tags(self, header):
-        """
-        @brief Extracts the tags/pkg keywords from a given section header.
-        @param self: A reference to the current object.
-        @param header: The section header to search for the tags field.
-        @return: The tags value found in the header, or None if not found.
-        """
-        tags_match = re.search(
-            r'^tags\s*=\s*(.*)$', header, flags=re.MULTILINE)
-        if tags_match:
-            tags = tags_match.group(1)
-        else:
-            tags = None
-        return tags
+        return same_line
 
-    def get_version(self, header):
-        """
-        @brief Extracts the package version from the header string.
-        @param self: A reference to the current object.
-        @param header: The section header to search for the tags field.
-        @return The version value, or None if no version is found.
-        """
-        version_match = re.search(
-            r'^version\s*=\s*(.*)$', header, flags=re.MULTILINE)
-        if version_match:
-            version = version_match.group(1)
-        else:
-            version = None
-        return version
-
-    def get_depends(self, header):
+    def get_next(self, text, header):
         """
         @brief Extracts package dependencies
         @param self: A reference to the current object.
@@ -169,110 +134,22 @@ class Parse:
         @return The list of dependencies, or None if not found.
         """
         depends_match = re.search(
-            r'^depends\s*=\s*(.*(?:\n\s+.*)*)',
+            rf'^{text}\s*=\s*(.*(?:\n\s+.*)*)',
             header,
             flags=re.MULTILINE)
+
         if depends_match:
             depends = depends_match.group(1).strip().split('\n')
             # remove tabs
             depends = [dep.replace('\t', '') for dep in depends]
         else:
             depends = None
+
         return depends
-
-    def get_test_cmd(self, header):
-        """
-        @brief Extracts package test commands
-        @param self: A reference to the current object.
-        @param header: The section header to search for the tags field.
-        @return The list of test commands, or None if not found.
-        """
-        test_cmd_match = re.search(
-            r'^test_command\s*=\s*(.*)$', header, flags=re.MULTILINE)
-        if test_cmd_match:
-            test_cmd = test_cmd_match.group(1)
-        else:
-            test_cmd = None
-        return test_cmd
-
-    def get_build_cmd(self, header):
-        """
-        @brief Extracts package build commands
-        @param self: A reference to the current object.
-        @param header: The section header to search for the tags field.
-        @return The list of build commands, or None if not found.
-        """
-        build_cmd_match = re.search(
-            r'^build_command\s*=\s*(.*)$', header, flags=re.MULTILINE)
-        if build_cmd_match:
-            build_cmd = build_cmd_match.group(1)
-        else:
-            build_cmd = None
-        return build_cmd
-
-    def get_url(self, header):
-        """
-        @brief Extracts package repository URL
-        @param self: A reference to the current object.
-        @param header: The section header to search for the tags field.
-        @return The repo URL, or None if not found.
-        """
-        url_match = re.search(
-            r'^url\s*=\s*(.*)$', header, flags=re.MULTILINE)
-        if url_match:
-            url = url_match.group(1)
-        else:
-            url = None
-        return url
-
-    def get_summary(self, header):
-        """
-        @brief Extracts package summary
-        @param self: A reference to the current object.
-        @param header: The section header to search for the tags field.
-        @return The package summary, or None if not found.
-        """
-        summary_match = re.search(
-            r'^summary\s*=\s*(.*)$', header, flags=re.MULTILINE)
-        if summary_match:
-            summary = summary_match.group(1)
-        else:
-            summary = None
-        return summary
-
-    def get_script_dir(self, header):
-        """
-        @brief Extracts package script directory location
-        @param self: A reference to the current object.
-        @param header: The section header to search for the tags field.
-        @return The pkg script dir, or None if not found.
-        """
-        script_dir_match = re.search(
-            r'^script_dir\s*=\s*(.*)$', header, flags=re.MULTILINE)
-        if script_dir_match:
-            script_dir = script_dir_match.group(1)
-        else:
-            script_dir = None
-        return script_dir
-
-    def get_plugin_dir(self, header):
-        """
-        @brief Extracts package plugin directory location
-        @param self: A reference to the current object.
-        @param header: The section header to search for the tags field.
-        @return The pkg plugin dir, or None if not found.
-        """
-        plugin_dir_match = re.search(
-            r'^plugin_dir\s*=\s*(.*)$', header, flags=re.MULTILINE)
-        if plugin_dir_match:
-            plugin_dir = plugin_dir_match.group(1)
-        else:
-            plugin_dir = None
-        return plugin_dir
 
     def print_data(self):
         """
-        @brief Prints the  parsed data.
+        @brief Print utility function for debugging.
         @param self: A reference to the current object.
         @return: None
         """

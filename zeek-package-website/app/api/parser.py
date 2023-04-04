@@ -12,6 +12,7 @@ Parser utility for scraping values from aggragate.meta
 #       REGEX function. this will eliminate duplicated code
 
 import re
+import requests
 
 
 class Parse:
@@ -41,6 +42,7 @@ class Parse:
         self.plugin_dir = None      # pkg plugin directory
         # TODO: implement REGEX method for this
         self.user_vars = None       # pkg user variables
+        self.readme = None
 
     def parse_data(self):
         """
@@ -73,6 +75,7 @@ class Parse:
             self.summary = self.get_line("summary", header)
             self.script_dir = self.get_line("script_dir", header)
             self.plugin_dir = self.get_line("plugin_dir", header)
+            self.readme = self.get_readme()
 
             # yield the fields we retrieved
             yield (self.section_header,
@@ -85,7 +88,9 @@ class Parse:
                    self.url,
                    self.summary,
                    self.script_dir,
-                   self.plugin_dir)
+                   self.plugin_dir,
+                   self.readme)
+
             # section_count to keep track of # of packages
             self.section_count += 1
 
@@ -166,7 +171,60 @@ class Parse:
             print(f"Summary = {self.summary}")
             print(f"Script Dir = {self.script_dir}")
             print(f"Plugin Dir = {self.plugin_dir}")
+            print(f"Has Readme = {self.readme is not None}")
             print()
+
+    def get_readme(self) -> str:
+        """
+        @brief Use HTTP requests to find readme's for packages
+        @param self: a reference to the current object
+        @return: The readme obtained from the http request or None if not found
+        """
+        if self.url is not None:
+            name = self.url
+            name = name.removeprefix("https://github.com/")
+            name = name.rstrip("/")
+        else:
+            name = self.section_header
+            name = name.strip("[]")
+
+        name = name.removesuffix(".git")
+        request_url = f"https://raw.githubusercontent.com/{name}/master"
+
+        get_request = requests.get(f"{request_url}/README.md")
+
+        if not get_request.ok:
+            get_request = requests.get(f"{request_url}/readme.md")
+
+            if not get_request.ok:
+                get_request = requests.get(f"{request_url}/README")
+
+                if not get_request.ok:
+                    get_request = requests.get(f"{request_url}/readme")
+
+                    if not get_request.ok:
+                        get_request = requests.get(f"{request_url}/Readme.md")
+
+                        if not get_request.ok:
+                            get_request = requests.get(f"{request_url}/Readme")
+
+                            if not get_request.ok:
+                                get_request = requests.get(f"{request_url}/README.rst")
+
+                                if not get_request.ok:
+                                    get_request = requests.get(f"{request_url}/Readme.rst")
+
+                                    if not get_request.ok:
+                                        get_request = requests.get(f"{request_url}/readme.rst")
+
+                                        if not get_request.ok:
+                                            if "https://gitlab.com" in name:
+                                                get_request = requests.get(f"{name}/-/raw/master/README.md")
+
+                                            if not get_request.ok:
+                                                return None
+
+        return get_request.content.decode("utf-8")
 
 
 def main():
@@ -175,7 +233,6 @@ def main():
     p = Parse(file)
     # print the parsed data
     p.print_data()
-
 
 if __name__ == '__main__':
     main()

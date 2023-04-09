@@ -1,21 +1,11 @@
 """
 Parser utility for scraping values from aggragate.meta
 """
-# TODO:
-# * FIXME REGEX for descriptions... take into account data on the next
-#       line. IF data is on the next line, it is suffixed with tabs
-#
-# * FIXME misc. key/val pairs that are not as common... look thru
-#       aggragate.meta file pkg by pkg to see what is left to scrape
-#
-# * FIXME move functions that use the same REGEX to a commmon
-#       REGEX function. this will eliminate duplicated code
-
 import re
 import requests
 
 
-class Parse:
+class Parse(object):
     def __init__(self, file):
         """
         @brief Constructor for the Parse class. Sets needed values to
@@ -42,9 +32,10 @@ class Parse:
         self.plugin_dir = None      # pkg plugin directory
         # TODO: implement REGEX method for this
         self.user_vars = None       # pkg user variables
-        self.readme = None
+        self.readme = None          # readmes
+        self.pkg_dict = {}          # store the packages as a dict
 
-    def parse_data(self):
+    def parse_data(self) -> dict:
         """
         @brief Extracts package information from the file contents.
         Loop over section headers and look for the specified key/value
@@ -57,50 +48,58 @@ class Parse:
         # initialize package counter
         self.section_count = 1
 
+        # empty dict
+        self.data_dict = {}
+
         # loop over each header and extract the desired fields
         for header in headers:
             # extract the section header
             self.section_header = re.search(
                 r'\[[^/^].*?\/[^[]*?\]', header).group(0)
+
             # extract our desired fields
             # TODO: pass in header + text to look for
             self.author = self.get_line("credits", header)
             self.description = self.get_line("description", header)
             self.tags = self.get_line("tags", header)
             self.version = self.get_line("version", header)
-            self.depends = self.get_next("depends", header)
+            self.get_next("depends", header)
             self.test_cmd = self.get_line("test_command", header)
             self.build_cmd = self.get_line("build_command", header)
             self.url = self.get_line("url", header)
             self.summary = self.get_line("summary", header)
             self.script_dir = self.get_line("script_dir", header)
             self.plugin_dir = self.get_line("plugin_dir", header)
-            self.readme = self.get_readme()
+            #self.readme = self.get_readme()
 
-            # yield the fields we retrieved
-            yield (self.section_header,
-                   self.description,
-                   self.tags,
-                   self.version,
-                   self.depends,
-                   self.test_cmd,
-                   self.build_cmd,
-                   self.url,
-                   self.summary,
-                   self.script_dir,
-                   self.plugin_dir,
-                   self.readme)
+            self.data_dict[self.section_header] = {
+                "description": self.description,
+                "tags": self.tags,
+                "version": self.version,
+                "depends": self.depends,
+                "test_cmd": self.test_cmd,
+                "build_cmd": self.build_cmd,
+                "url": self.url,
+                "summary": self.summary,
+                "script_dir": self.script_dir,
+                "plugin_dir": self.plugin_dir,
+                #    "readme": self.readme
+            }
+
 
             # section_count to keep track of # of packages
             self.section_count += 1
+            
+        return self.data_dict
+            
 
-    def get_name(self):
+    def get_name(self) -> str:
         """
         @brief Finds all section headers in the file contents.
         search and return all TOML styled section headers enclosed in
         brackets [ ]
         @param self: A reference to the current object.
-        @return: A list of section headers found in the file contents.
+        @return: section headers found in the file contents as strings.
         """
         headers = re.findall(
             r'\[[^/^][^[]*?\/[^[]*?\][^[]*',
@@ -119,38 +118,38 @@ class Parse:
         """
         # generic regular expression
         reg = (r'^{text}\s*=\s*(.+)', text)
-        regex_match = re.search(
+        same_match = re.search(
             rf'^{text}\s*=\s*(.+)',
             header,
             flags=re.MULTILINE)
 
-        if regex_match:
-            same_line = regex_match.group(1)
+        if same_match:
+            same_line = same_match.group(1)
         else:
             same_line = None
 
         return same_line
 
-    def get_next(self, text, header):
+    def get_next(self, text, header) -> list:
         """
         @brief Extracts package dependencies
         @param self: A reference to the current object.
         @param header: The section header to search for the tags field.
         @return The list of dependencies, or None if not found.
         """
-        depends_match = re.search(
+        next_match = re.search(
             rf'^{text}\s*=\s*(.*(?:\n\s+.*)*)',
             header,
             flags=re.MULTILINE)
 
-        if depends_match:
-            depends = depends_match.group(1).strip().split('\n')
+        if next_match:
+            next_line = next_match.group(1).strip().split('\n')
             # remove tabs
-            depends = [dep.replace('\t', '') for dep in depends]
+            next_line = [ln.replace('\t', '') for ln in next_line]
         else:
-            depends = None
+            next_line = None
 
-        return depends
+        return next_line
 
     def print_data(self):
         """
@@ -209,30 +208,62 @@ class Parse:
                             get_request = requests.get(f"{request_url}/Readme")
 
                             if not get_request.ok:
-                                get_request = requests.get(f"{request_url}/README.rst")
+                                get_request = requests.get(
+                                    f"{request_url}/README.rst")
 
                                 if not get_request.ok:
-                                    get_request = requests.get(f"{request_url}/Readme.rst")
+                                    get_request = requests.get(
+                                        f"{request_url}/Readme.rst")
 
                                     if not get_request.ok:
-                                        get_request = requests.get(f"{request_url}/readme.rst")
+                                        get_request = requests.get(
+                                            f"{request_url}/readme.rst")
 
                                         if not get_request.ok:
                                             if "https://gitlab.com" in name:
-                                                get_request = requests.get(f"{name}/-/raw/master/README.md")
+                                                get_request = requests.get(
+                                                    f"{name}/-/raw/master/README.md")
 
                                             if not get_request.ok:
                                                 return None
 
         return get_request.content.decode("utf-8")
-
+    
 
 def main():
     file = 'aggregate.meta'
     # parse the file for all of its fields
-    p = Parse(file)
+    parser = Parse(file)
     # print the parsed data
-    p.print_data()
+    #parser.print_data()
+    parser.parse_data()
+
+    # Access the data_dict dictionary to print the extracted package data
+    """
+    for section_header, package_data in parser.data_dict.items():
+        print(f"Package name: {section_header}")
+        print(f"\tDescription: {package_data['description']}")
+        print(f"\tTags: {package_data['tags']}")
+        print(f"\tVersion: {package_data['version']}")
+        print(f"\tDepends: {package_data['depends']}")
+        print(f"\tTest command: {package_data['test_cmd']}")
+        print(f"\tBuild command: {package_data['build_cmd']}")
+        print(f"\tURL: {package_data['url']}")
+        print(f"\tSummary: {package_data['summary']}")
+        print(f"\tScript dir: {package_data['script_dir']}")
+        print(f"\tPlugin dir: {package_data['plugin_dir']}")
+        #print(f"\tReadme: {package_data['readme']}")
+    """
+    # get a specific package NOTE: be sure to include outside brackets 
+    #pkg = parser.data_dict["[corelight/callstranger-detector]"]
+    #print(pkg)
+
+    # print all packages as dicts
+    for key, val, in parser.data_dict.items():
+        print(key, val)
+
+
+
 
 if __name__ == '__main__':
     main()

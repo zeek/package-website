@@ -1,0 +1,1 @@
+{"description": null, "tags": null, "version": null, "depends": null, "test_cmd": null, "build_cmd": "git describe --always --long | sed 's/-", "url": null, "summary": null, "script_dir": null, "plugin_dir": null, "readme": "Zeek Agent Framework\n====================\n\nSee the [Zeek Agent](https://github.com/zeek/zeek-agent-v2).\n\n(More to come here, too).\n"}

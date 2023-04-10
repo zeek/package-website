@@ -3,6 +3,7 @@ Parser utility for scraping values from aggragate.meta
 """
 import re
 import requests
+import json
 
 
 class Parse(object):
@@ -70,7 +71,7 @@ class Parse(object):
             self.summary = self.get_line("summary", header)
             self.script_dir = self.get_line("script_dir", header)
             self.plugin_dir = self.get_line("plugin_dir", header)
-            #self.readme = self.get_readme()
+            self.readme = self.get_readme()
 
             self.data_dict[self.section_header] = {
                 "description": self.description,
@@ -83,15 +84,15 @@ class Parse(object):
                 "summary": self.summary,
                 "script_dir": self.script_dir,
                 "plugin_dir": self.plugin_dir,
-                #    "readme": self.readme
+                "readme": self.readme
             }
 
 
             # section_count to keep track of # of packages
             self.section_count += 1
-            
+
         return self.data_dict
-            
+
 
     def get_name(self) -> str:
         """
@@ -173,6 +174,15 @@ class Parse(object):
             print(f"Has Readme = {self.readme is not None}")
             print()
 
+    def dump(self):
+
+        for item in self.data_dict.items():
+            name = item[0].split("/")[1]
+            name = name.strip("]")
+            with open(f"search/json_files/{name}.json", "w+",
+                      encoding="utf-8") as outfile:
+                outfile.write(json.dumps(item[1]))
+
     def get_readme(self) -> str:
         """
         @brief Use HTTP requests to find readme's for packages
@@ -228,7 +238,7 @@ class Parse(object):
                                                 return None
 
         return get_request.content.decode("utf-8")
-    
+
 
 def main():
     file = 'aggregate.meta'
@@ -237,6 +247,8 @@ def main():
     # print the parsed data
     #parser.print_data()
     parser.parse_data()
+
+    parser.dump()
 
     # Access the data_dict dictionary to print the extracted package data
     """
@@ -254,7 +266,7 @@ def main():
         print(f"\tPlugin dir: {package_data['plugin_dir']}")
         #print(f"\tReadme: {package_data['readme']}")
     """
-    # get a specific package NOTE: be sure to include outside brackets 
+    # get a specific package NOTE: be sure to include outside brackets
     #pkg = parser.data_dict["[corelight/callstranger-detector]"]
     #print(pkg)
 

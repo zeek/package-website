@@ -1,0 +1,1 @@
+{"description": "find SMBv1 activity", "tags": "smb, logging", "version": "1.0.2", "depends": null, "test_cmd": null, "build_cmd": null, "url": "https://github.com/klehigh/find_smbv1", "summary": null, "script_dir": "scripts", "plugin_dir": null, "readme": "Zeek script to find SMBv1 activity.\n\nRaises notices for now.  Someday it will log the commands too. \n\n"}

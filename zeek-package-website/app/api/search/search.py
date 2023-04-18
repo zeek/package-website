@@ -96,7 +96,7 @@ def search(query: str) -> dict:
 
 
 def main():
-    query = "ssh"
+    query = "ja3"
 
     print(f"The query is: {query}\n")
 

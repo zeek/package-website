@@ -70,7 +70,7 @@ class Parse(object):
             self.summary = self.get_line("summary", header)
             self.script_dir = self.get_line("script_dir", header)
             self.plugin_dir = self.get_line("plugin_dir", header)
-            #self.readme = self.get_readme()
+            self.readme = self.get_readme()
 
             self.pkg_dict[self.section_header] = {
                 "description": self.description,
@@ -83,15 +83,15 @@ class Parse(object):
                 "summary": self.summary,
                 "script_dir": self.script_dir,
                 "plugin_dir": self.plugin_dir,
-                #    "readme": self.readme
+                "readme": self.readme
             }
 
 
             # section_count to keep track of # of packages
             self.section_count += 1
-            
+
         return self.pkg_dict
-            
+
 
     def get_name(self) -> str:
         """
@@ -190,45 +190,28 @@ class Parse(object):
         name = name.removesuffix(".git")
         request_url = f"https://raw.githubusercontent.com/{name}/master"
 
-        get_request = requests.get(f"{request_url}/README.md")
+        # if packages have other forms of readme add to this list
+        filenames = ["README.md", "readme.md", "README", "readme", "Readme.md"
+                     "Readme", "README.rst", "Readme.rst", "readme.rst"]
+        counter = 1
+
+        readme_ext = filenames[0]
+        get_request = requests.get(f"{request_url}/{readme_ext}")
+
+        while not get_request.ok and counter < len(filenames):
+            readme_ext = filenames[counter]
+            get_request = requests.get(f"{request_url}/{readme_ext}")
+            counter += 1
+
+        # check for special case, as one package uses gitlab
+        if "https://gitlab.com" in name:
+            get_request = requests.get(f"{name}/-/raw/master/README.md")
 
         if not get_request.ok:
-            get_request = requests.get(f"{request_url}/readme.md")
-
-            if not get_request.ok:
-                get_request = requests.get(f"{request_url}/README")
-
-                if not get_request.ok:
-                    get_request = requests.get(f"{request_url}/readme")
-
-                    if not get_request.ok:
-                        get_request = requests.get(f"{request_url}/Readme.md")
-
-                        if not get_request.ok:
-                            get_request = requests.get(f"{request_url}/Readme")
-
-                            if not get_request.ok:
-                                get_request = requests.get(
-                                    f"{request_url}/README.rst")
-
-                                if not get_request.ok:
-                                    get_request = requests.get(
-                                        f"{request_url}/Readme.rst")
-
-                                    if not get_request.ok:
-                                        get_request = requests.get(
-                                            f"{request_url}/readme.rst")
-
-                                        if not get_request.ok:
-                                            if "https://gitlab.com" in name:
-                                                get_request = requests.get(
-                                                    f"{name}/-/raw/master/README.md")
-
-                                            if not get_request.ok:
-                                                return None
+            return None
 
         return get_request.content.decode("utf-8")
-    
+
 
 def main():
     file = 'aggregate.meta'
@@ -254,7 +237,7 @@ def main():
         print(f"\tPlugin dir: {package_data['plugin_dir']}")
         #print(f"\tReadme: {package_data['readme']}")
     """
-    # get a specific package NOTE: be sure to include outside brackets 
+    # get a specific package NOTE: be sure to include outside brackets
     #pkg = parser.pkg_dict["[corelight/callstranger-detector]"]
     #print(pkg)
 

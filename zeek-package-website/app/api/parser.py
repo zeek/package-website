@@ -50,7 +50,7 @@ class Parse(object):
         self.section_count = 1
 
         # empty dict
-        self.data_dict = {}
+        self.pkg_dict = {}
 
         # loop over each header and extract the desired fields
         for header in headers:
@@ -73,7 +73,7 @@ class Parse(object):
             self.plugin_dir = self.get_line("plugin_dir", header)
             self.readme = self.get_readme()
 
-            self.data_dict[self.section_header] = {
+            self.pkg_dict[self.section_header] = {
                 "description": self.description,
                 "tags": self.tags,
                 "version": self.version,
@@ -92,6 +92,7 @@ class Parse(object):
             self.section_count += 1
 
         return self.data_dict
+
 
 
     def get_name(self) -> str:
@@ -250,9 +251,9 @@ def main():
 
     parser.dump()
 
-    # Access the data_dict dictionary to print the extracted package data
+    # Access the pkg_dict dictionary to print the extracted package data
     """
-    for section_header, package_data in parser.data_dict.items():
+    for section_header, package_data in parser.pkg_dict.items():
         print(f"Package name: {section_header}")
         print(f"\tDescription: {package_data['description']}")
         print(f"\tTags: {package_data['tags']}")
@@ -266,12 +267,13 @@ def main():
         print(f"\tPlugin dir: {package_data['plugin_dir']}")
         #print(f"\tReadme: {package_data['readme']}")
     """
+
     # get a specific package NOTE: be sure to include outside brackets
-    #pkg = parser.data_dict["[corelight/callstranger-detector]"]
+    #pkg = parser.pkg_dict["[corelight/callstranger-detector]"]
     #print(pkg)
 
     # print all packages as dicts
-    for key, val, in parser.data_dict.items():
+    for key, val, in parser.pkg_dict.items():
         print(key, val)
 
 

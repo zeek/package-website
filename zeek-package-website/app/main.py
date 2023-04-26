@@ -11,10 +11,7 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 
 @app.get("/", response_class=HTMLResponse)
 async def home(request: Request):
-    data = {
-        "text": "Hello World!"
-    }
-    return templates.TemplateResponse("index.html", {"request": request, "data": data})
+    return templates.TemplateResponse("index.html", {"request": request})
 
 
 # example created a dynamic page based on page name, this can be modified for our packages

@@ -58,6 +58,26 @@ body {
     border-bottom: 2px solid;
 }
 
+/* Search Bar Styling */
+.search-bar {
+    border: none;
+    border-radius: 12px 0 0 12px;
+    padding: 6px;
+    font-size: 18px;
+}
+
+.submit-search {
+    border: none;
+    border-radius: 0 12px 12px 0;
+    padding: 6px 10px;
+    font-size: 18px;
+}
+
+h1 {
+    margin: 6px;
+    padding: 6px;
+}
+
 /* Footer Styling  */
 footer {
     bottom: 0;

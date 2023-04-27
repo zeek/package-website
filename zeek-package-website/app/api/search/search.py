@@ -1,4 +1,5 @@
 from numpy import log as ln
+from os import listdir
 
 
 def get_avgdl(documents: []) -> int:
@@ -79,12 +80,12 @@ def score_helper(document: str, term: str, avgdl: int, idfs: dict) -> int:
 def search(query: str) -> dict:
 
     documents = []
-    document_names = ["bro-ja3.txt", "bro-sysmon.txt", "cve-2020-16898.txt",
-                      "got_zoom.txt", "hassh.txt", "ja3.txt"]
+    document_names = listdir("json_files")
 
     for name in document_names:
-        text_file = open(name, "r")
+        text_file = open(f"json_files/{name}", "r")
         data = text_file.read()
+        data = data.split("readme")[1]
         data = data.lower().split()
         documents.append(data)
         text_file.close()
@@ -95,11 +96,14 @@ def search(query: str) -> dict:
 
 
 def main():
-    query = "ssh"
+    query = "ja3"
 
     print(f"The query is: {query}\n")
 
-    print(f"Results: {search(query)}\n")
+    results = search(query)
+
+    print(f"Results: {results}\n")
+    print(f"The max is: {max(results, key=results.get)}\n")
 
 
 if __name__ == "__main__":

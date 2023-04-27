@@ -3,6 +3,7 @@ Parser utility for scraping values from aggragate.meta
 """
 import re
 import requests
+import json
 
 
 class Parse(object):
@@ -90,7 +91,9 @@ class Parse(object):
             # section_count to keep track of # of packages
             self.section_count += 1
 
+
         return self.pkg_dict
+
 
 
     def get_name(self) -> str:
@@ -173,6 +176,15 @@ class Parse(object):
             print(f"Has Readme = {self.readme is not None}")
             print()
 
+    def dump(self):
+
+        for item in self.data_dict.items():
+            name = item[0].split("/")[1]
+            name = name.strip("]")
+            with open(f"search/json_files/{name}.json", "w+",
+                      encoding="utf-8") as outfile:
+                outfile.write(json.dumps(item[1]))
+
     def get_readme(self) -> str:
         """
         @brief Use HTTP requests to find readme's for packages
@@ -220,6 +232,8 @@ def main():
     # print the parsed data
     #parser.print_data()
     parser.parse_data()
+
+    parser.dump()
 
     # Access the pkg_dict dictionary to print the extracted package data
     """

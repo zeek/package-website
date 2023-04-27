@@ -92,8 +92,9 @@ def search(query: str) -> dict:
 
     rankings = rank(documents, query)
 
-    return {document_names[i]: rankings[i] for i in range(len(document_names))}
+    rankings = {document_names[i]: rankings[i] for i in range(len(document_names))}
 
+    return sorted(rankings.items(), key=lambda item: item[1], reverse=True)
 
 def main():
     query = "ja3"
@@ -101,9 +102,8 @@ def main():
     print(f"The query is: {query}\n")
 
     results = search(query)
-
     print(f"Results: {results}\n")
-    print(f"The max is: {max(results, key=results.get)}\n")
+    print(type(results[0]))
 
 
 if __name__ == "__main__":

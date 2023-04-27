@@ -77,8 +77,27 @@ def score_helper(document: str, term: str, avgdl: int, idfs: dict) -> int:
     return idf * score
 
 
-def search(query: str) -> dict:
-
+def search(query: str) -> list:
+    """
+    Returns a list of package file names sorted by relevane.
+    
+    Parameters
+    ----------
+    query : str
+        The search query in the form of a string
+        
+    Returns
+    -------
+    list
+        A sorted list of tuples where the first item is the name and the second is the score
+    
+    Examples
+    --------
+    >>> from search import search
+    >>> query = "ja3"
+    >>> results = search(query)
+    >>> print(results)
+    """
     documents = []
     document_names = listdir("json_files")
 

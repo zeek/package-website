@@ -1,0 +1,1 @@
+{"description": "Create dummy connection records.", "tags": "connection", "version": "1.0.0", "depends": null, "test_cmd": null, "build_cmd": null, "url": "https://github.com/hosom/dummy-connections", "summary": null, "script_dir": "scripts", "plugin_dir": null, "readme": null}

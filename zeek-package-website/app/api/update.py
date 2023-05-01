@@ -1,9 +1,11 @@
+#!/usr/bin/env python3
+
 import subprocess
 from parser import Parse
 
 
 def main():
-    std_out = subprocess.run(["git", "pull", "origin", "demo-updates"],
+    std_out = subprocess.run(["git", "pull", "origin", "main"],
                              capture_output=True).stdout
     file = 'aggregate.meta'
 

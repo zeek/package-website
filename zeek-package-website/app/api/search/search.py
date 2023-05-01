@@ -2,6 +2,19 @@ from numpy import log as ln
 import os
 
 
+def bias(rankings: dict, query: str):
+    new_list = []
+
+    for item in rankings.items():
+        if query in item[0]:
+            new_item = (item[0], item[1] + 3.0)
+            new_list.append(new_item)
+        else:
+            new_list.append(item)
+
+    return new_list
+
+
 def get_avgdl(documents: []) -> int:
     avgdl = 0
 
@@ -113,17 +126,19 @@ def search(query: str) -> list:
 
     rankings = {document_names[i]: rankings[i] for i in range(len(document_names))}
 
-    return sorted(rankings.items(), key=lambda item: item[1], reverse=True)
+    rankings = bias(rankings, query)
+
+    return sorted(rankings, key=lambda item: item[1], reverse=True)
+
 
 
 def main():
-    query = "ja3"
+    query = "http"
 
     print(f"The query is: {query}\n")
 
     results = search(query)
     print(f"Results: {results}\n")
-    print(type(results[0]))
 
 
 if __name__ == "__main__":

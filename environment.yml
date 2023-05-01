@@ -13,4 +13,5 @@ dependencies:
   - python-multipart
   - jinja2
   - markdown
+  - fastapi_utils
   - pytest

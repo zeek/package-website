@@ -1,5 +1,5 @@
 from numpy import log as ln
-from os import listdir
+import os
 
 
 def get_avgdl(documents: []) -> int:
@@ -39,8 +39,7 @@ def get_idfs_helper(documents: [], term: str) -> int:
             if term in word.lower():
                 document_frequency += 1
 
-    return ln(((len(documents) - document_frequency + 0.5) /
-               (document_frequency + 0.5)) + 1)
+    return ln(((len(documents) - document_frequency + 0.5) / (document_frequency + 0.5)) + 1)
 
 
 def rank(documents: [], query: str) -> []:
@@ -71,8 +70,7 @@ def score_helper(document: str, term: str, avgdl: int, idfs: dict) -> int:
     k1 = 1.0  # k1 is a free variable anywhere from 1.2 to 2
     b = 0.75  # b is a free variable that is commonly 0.75
     delta = 1.0  # delta is a free variable that is commonly 1.0
-    score = ((frequency * (k1 + 1)) /
-             (frequency + k1 * (1 - b + b * (len(document) / avgdl)))) + delta
+    score = ((frequency * (k1 + 1)) / (frequency + k1 * (1 - b + b * (len(document) / avgdl)))) + delta
 
     return idf * score
 
@@ -80,17 +78,17 @@ def score_helper(document: str, term: str, avgdl: int, idfs: dict) -> int:
 def search(query: str) -> list:
     """
     Returns a list of package file names sorted by relevane.
-    
+
     Parameters
     ----------
     query : str
         The search query in the form of a string
-        
+
     Returns
     -------
     list
         A sorted list of tuples where the first item is the name and the second is the score
-    
+
     Examples
     --------
     >>> from search import search
@@ -99,10 +97,12 @@ def search(query: str) -> list:
     >>> print(results)
     """
     documents = []
-    document_names = listdir("json_files")
+    project_dir = os.path.dirname(os.path.abspath(__file__))
+    json_files_dir = os.path.join(project_dir, "json_files")
+    document_names = os.listdir(json_files_dir)
 
     for name in document_names:
-        text_file = open(f"json_files/{name}", "r")
+        text_file = open(os.path.join(json_files_dir, name), "r")
         data = text_file.read()
         data = data.split("readme")[1]
         data = data.lower().split()
@@ -114,6 +114,7 @@ def search(query: str) -> list:
     rankings = {document_names[i]: rankings[i] for i in range(len(document_names))}
 
     return sorted(rankings.items(), key=lambda item: item[1], reverse=True)
+
 
 def main():
     query = "ja3"

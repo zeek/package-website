@@ -3,6 +3,9 @@ from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
+from app.api.package import package as p
+from app.api.search import search as s
+
 
 app = FastAPI()
 templates = Jinja2Templates(directory="templates")
@@ -17,15 +20,23 @@ async def home(request: Request):
 # example created a dynamic page based on page name, this can be modified for our packages
 @app.get("/packages/{package_name}", response_class=HTMLResponse)
 async def package(request: Request, package_name: str):
+    result = p.get_info(package_name)
     data = {
-        "package": package_name
+        "package": package_name,
+        "package_info": result
     }
-    return templates.TemplateResponse("package-info.html", {"request": request, "data": data})
+    # send users back to home page if package does not exist
+    if result is not None:
+        return templates.TemplateResponse("package-info.html", {"request": request, "data": data})
+    else:
+        return templates.TemplateResponse("index.html", {"request": request})
 
 
 @app.post("/search", response_class=HTMLResponse)
 async def search(request: Request, query: str = Form(...)):
+    results = s.search(query)
     data = {
-        "query": query
-        }
+        "query": query,
+        "results": results
+    }
     return templates.TemplateResponse("search.html", {"request": request, "data": data})

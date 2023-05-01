@@ -1,7 +1,7 @@
 /* Standard Variables */
 :root {
     --font-family: sans-serif;
-    --bold-font-weight: 700px;
+    --bold-font-weight: 700;
     --zeek-blue: #00AAE3;
 }
 
@@ -21,6 +21,11 @@ body {
     background: var(--zeek-blue);
     font-family: var(--font-family);
     text-align: center;
+}
+
+h1 {
+    margin: 6px;
+    padding: 6px;
 }
 
 /* Nav Styling */
@@ -58,6 +63,11 @@ body {
     border-bottom: 2px solid;
 }
 
+.page-container {
+    justify-content: center;
+    align-items: center;
+}
+
 /* Search Bar Styling */
 .search-bar {
     border: none;
@@ -73,15 +83,30 @@ body {
     font-size: 18px;
 }
 
-h1 {
-    margin: 6px;
-    padding: 6px;
+.search-card {
+    padding: 24px;
+    margin: 18px auto;
+    background-color: #FFFFFF;
+    width: 60%;
+}
+
+.package-text {
+    text-align: left;
+}
+
+.package-title {
+    font-weight: var(--bold-font-weight);
+    text-decoration: none;
+    color: #000000;
+}
+
+.package-title:hover {
+    color: var(--zeek-blue);
 }
 
 /* Footer Styling  */
 footer {
     bottom: 0;
-    position: absolute;
     margin: 3rem 0 0;
     padding: 1.5rem;
     width: 100%;

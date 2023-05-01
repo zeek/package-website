@@ -6,5 +6,17 @@ Zeek Package Repository
 
 {% block content %}
 <h1>Package Results for: '{{ data.query }}'</h1>
-<p>Showing "insert num here" Total Results</p>
+<p>Showing {{ data.results|length }} Total Results</p>
+
+<div class="page-container">
+    {% for result in data.results %}
+    <div class="search-card">
+        <div class="package-text-container">
+            <p class="package-text">
+            <a class="package-title" href="/packages/{{ result[0] }}">{{ result[0] }}</a>
+            </p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
 {% endblock %}

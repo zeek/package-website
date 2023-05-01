@@ -5,5 +5,40 @@ Zeek Package Repository
 {% endblock %}
 
 {% block content %}
-<h1>{{ data.package }}</h1>
+<div class="page-container">
+    <div class="package-title-card">
+        <h1 class="package-text">{{ data.package_name }} <small>version: {{ data.package_info["version"] }}</small></h1>
+        {% if data.package_info["description"] is not none %}
+        <p class="package-text">{{ data.package_info["description"] }}</p>
+        {% endif %}
+    </div>
+
+    <div class="package-info-container">
+        <div class="package-left-container">
+            <div class="small-card">
+                <h2>Dependencies</h2>
+                <p>{{ data.package_info["depends"] if data.package_info["depends"] is not none else "No Dependencies" }}</p>
+            </div>
+            <div class="small-card">
+                <h2>Test Command</h2>
+                <code>{{ data.package_info["test_cmd"] if data.package_info["test_cmd"] is not none else "No Test Command" }}</code>
+            </div>
+            <div class="small-card">
+                <h2>Build Command</h2>
+                <code>{{ data.package_info["build_cmd"] if data.package_info["build_cmd"] is not none else "No Test Command" }}</code>
+            </div>
+            <div class="small-card">
+                <h2>Repository</h2>
+                {% if data.package_info["url"] is not none %}
+                <a href="{{ data.package_info["url"] }}">{{ data.package_info["url"] }}</a>
+                {% else %}
+                <p>Error Retrieving Package URL</p>
+                {% endif %}
+            </div>
+        </div>
+        <div class="readme-container">
+            {{ data.package_readme|safe }}
+        </div>
+    </div>
+</div>
 {% endblock %}

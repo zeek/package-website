@@ -6,6 +6,8 @@ from fastapi.templating import Jinja2Templates
 from app.api.package import package as p
 from app.api.search import search as s
 
+import markdown
+
 
 app = FastAPI()
 templates = Jinja2Templates(directory="templates")
@@ -21,9 +23,14 @@ async def home(request: Request):
 @app.get("/packages/{package_name}", response_class=HTMLResponse)
 async def package(request: Request, package_name: str):
     result = p.get_info(package_name)
+    if result is not None:
+        readme = markdown.markdown(result["readme"])
+    else:
+        readme = "<p>This package does not appear to have a README</p>"
     data = {
-        "package": package_name,
-        "package_info": result
+        "package_name": package_name,
+        "package_info": result,
+        "package_readme": readme
     }
     # send users back to home page if package does not exist
     if result is not None:

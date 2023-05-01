@@ -1,5 +1,5 @@
 from numpy import log as ln
-from os import listdir
+import os
 
 
 def bias(rankings: dict, query: str):
@@ -52,8 +52,7 @@ def get_idfs_helper(documents: [], term: str) -> int:
             if term in word.lower():
                 document_frequency += 1
 
-    return ln(((len(documents) - document_frequency + 0.5) /
-               (document_frequency + 0.5)) + 1)
+    return ln(((len(documents) - document_frequency + 0.5) / (document_frequency + 0.5)) + 1)
 
 
 def rank(documents: [], query: str) -> []:
@@ -84,8 +83,7 @@ def score_helper(document: str, term: str, avgdl: int, idfs: dict) -> int:
     k1 = 1.0  # k1 is a free variable anywhere from 1.2 to 2
     b = 0.75  # b is a free variable that is commonly 0.75
     delta = 1.0  # delta is a free variable that is commonly 1.0
-    score = ((frequency * (k1 + 1)) /
-             (frequency + k1 * (1 - b + b * (len(document) / avgdl)))) + delta
+    score = ((frequency * (k1 + 1)) / (frequency + k1 * (1 - b + b * (len(document) / avgdl)))) + delta
 
     return idf * score
 
@@ -112,10 +110,12 @@ def search(query: str) -> list:
     >>> print(results)
     """
     documents = []
-    document_names = listdir("json_files")
+    project_dir = os.path.dirname(os.path.abspath(__file__))
+    json_files_dir = os.path.join(project_dir, "json_files")
+    document_names = os.listdir(json_files_dir)
 
     for name in document_names:
-        text_file = open(f"json_files/{name}", "r")
+        text_file = open(os.path.join(json_files_dir, name), "r")
         data = text_file.read()
         data = data.split("readme")[1]
         data = data.lower().split()
@@ -129,6 +129,7 @@ def search(query: str) -> list:
     rankings = bias(rankings, query)
 
     return sorted(rankings, key=lambda item: item[1], reverse=True)
+
 
 
 def main():

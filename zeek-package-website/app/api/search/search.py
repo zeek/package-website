@@ -6,7 +6,7 @@ def bias(rankings: dict, query: str):
     new_list = []
 
     for item in rankings.items():
-        if query in item[0]:
+        if query in item[0].split(".")[0]:
             new_item = (item[0], item[1] + 3.0)
             new_list.append(new_item)
         else:
@@ -19,7 +19,6 @@ def cutoff(rankings: list, cutoff_score: int) -> int:
 
     for index in range(len(rankings)):
         if rankings[index][1] <= cutoff_score:
-            print(index)
             return index
 
 

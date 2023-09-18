@@ -15,6 +15,14 @@ def bias(rankings: dict, query: str):
     return new_list
 
 
+def cutoff(rankings: list, cutoff_score: int) -> int:
+
+    for index in range(len(rankings)):
+        if rankings[index][1] <= cutoff_score:
+            print(index)
+            return index
+
+
 def get_avgdl(documents: []) -> int:
     avgdl = 0
 
@@ -128,12 +136,13 @@ def search(query: str) -> list:
 
     rankings = bias(rankings, query)
 
-    return sorted(rankings, key=lambda item: item[1], reverse=True)
+    rankings = sorted(rankings, key=lambda item: item[1], reverse=True)
 
+    return rankings[0:cutoff(rankings, 0)]
 
 
 def main():
-    query = "http"
+    query = "ssh"
 
     print(f"The query is: {query}\n")
 

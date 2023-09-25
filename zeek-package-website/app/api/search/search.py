@@ -15,11 +15,11 @@ def bias(rankings: dict, query: str):
     return new_list
 
 
-def cutoff(rankings: list, cutoff_score: int) -> int:
+# def cutoff(rankings: list, cutoff_score: int) -> int:
 
-    for index in range(len(rankings)):
-        if rankings[index][1] <= cutoff_score:
-            return index
+#    for index in range(len(rankings)):
+#        if rankings[index][1] <= cutoff_score:
+#            return index
 
 
 def get_avgdl(documents: []) -> int:
@@ -60,6 +60,17 @@ def get_idfs_helper(documents: [], term: str) -> int:
                 document_frequency += 1
 
     return ln(((len(documents) - document_frequency + 0.5) / (document_frequency + 0.5)) + 1)
+
+
+def get_lower_bound(rankings: list) -> int:
+
+    current_index = len(rankings) - 1
+    lower_bound = rankings[current_index][1]
+
+    while rankings[current_index][1] == lower_bound:
+        current_index -= 1
+
+    return current_index + 1
 
 
 def rank(documents: [], query: str) -> []:
@@ -137,7 +148,7 @@ def search(query: str) -> list:
 
     rankings = sorted(rankings, key=lambda item: item[1], reverse=True)
 
-    return rankings[0:cutoff(rankings, 0)]
+    return rankings[0:get_lower_bound(rankings)]
 
 
 def main():

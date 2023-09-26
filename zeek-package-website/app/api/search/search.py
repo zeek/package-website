@@ -15,13 +15,6 @@ def bias(rankings: dict, query: str):
     return new_list
 
 
-# def cutoff(rankings: list, cutoff_score: int) -> int:
-
-#    for index in range(len(rankings)):
-#        if rankings[index][1] <= cutoff_score:
-#            return index
-
-
 def get_avgdl(documents: []) -> int:
     avgdl = 0
 
@@ -36,7 +29,7 @@ def get_frequency(document: str, term: str) -> int:
     frequency = 0
 
     for word in document:
-        if term in word:
+        if term in word and not ("http://" in word or "https://" in word):
             frequency += 1
 
     return frequency
@@ -56,7 +49,7 @@ def get_idfs_helper(documents: [], term: str) -> int:
 
     for document in documents:
         for word in document:
-            if term in word.lower():
+            if term in word.lower() and not ("http://" in word or "https://" in word):
                 document_frequency += 1
 
     return ln(((len(documents) - document_frequency + 0.5) / (document_frequency + 0.5)) + 1)

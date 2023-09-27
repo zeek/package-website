@@ -29,7 +29,7 @@ def get_frequency(document: str, term: str) -> int:
     frequency = 0
 
     for word in document:
-        if term in word and not ("http://" in word or "https://" in word):
+        if term in word and not (word.startswith("http://") or word.startswith("https://")):
             frequency += 1
 
     return frequency

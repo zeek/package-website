@@ -4,6 +4,13 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
 
+from app.api.package import package as p
+from app.api.search import search as s
+from app.api.update import update
+
+import markdown
+
+
 app = FastAPI()
 templates = Jinja2Templates(directory="templates")
 app.mount("/static", StaticFiles(directory="static"), name="static")

@@ -1,0 +1,16 @@
+name: Update aggregate data
+
+on:
+  repository_dispatch:
+    types: [ "rebuild_data" ]
+
+jobs:
+  update_metadata:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pull latest aggregate.meta from packages repo
+        run: |
+          curl -O https://raw.githubusercontent.com/zeek/packages/master/aggregate.meta
+      - name: Do something with it
+        run: |
+          cat aggregate.meta

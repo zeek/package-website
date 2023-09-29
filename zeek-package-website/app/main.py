@@ -21,3 +21,7 @@ async def package(request: Request, package_name: str):
         "package": package_name
     }
     return templates.TemplateResponse("package-info.html", {"request": request, "data": data})
+
+@app.get("/about", response_class=HTMLResponse)
+async def home(request: Request):
+    return templates.TemplateResponse("about.html", {"request": request})

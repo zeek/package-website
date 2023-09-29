@@ -61,7 +61,7 @@ body {
 /* Footer Styling  */
 footer {
     bottom: 0;
-    position: absolute;
+    position:relative;
     margin: 3rem 0 0;
     padding: 1.5rem;
     width: 100%;

@@ -54,17 +54,14 @@ def get_idfs_helper(documents: [], term: str) -> int:
 
     return ln(((len(documents) - document_frequency + 0.5) / (document_frequency + 0.5)) + 1)
 
-
 def get_lower_bound(rankings: list) -> int:
 
-    current_index = len(rankings) - 1
-    lower_bound = rankings[current_index][1]
+    index = 0
+    min_val = min(set(x[1] for x in rankings))
+    while rankings[index][1] > min_val:
+        index += 1
 
-    while rankings[current_index][1] == lower_bound:
-        current_index -= 1
-
-    return current_index + 1
-
+    return index - 1
 
 def rank(documents: [], query: str) -> []:
     scores = []

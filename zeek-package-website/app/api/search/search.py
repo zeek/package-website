@@ -6,7 +6,7 @@ def bias(rankings: dict, query: str):
     new_list = []
 
     for item in rankings.items():
-        if query in item[0]:
+        if query in item[0].split(".")[0]:
             new_item = (item[0], item[1] + 3.0)
             new_list.append(new_item)
         else:
@@ -29,7 +29,7 @@ def get_frequency(document: str, term: str) -> int:
     frequency = 0
 
     for word in document:
-        if term in word:
+        if term in word and not (word.startswith("http://") or word.startswith("https://")):
             frequency += 1
 
     return frequency
@@ -49,11 +49,19 @@ def get_idfs_helper(documents: [], term: str) -> int:
 
     for document in documents:
         for word in document:
-            if term in word.lower():
+            if term in word.lower() and not ("http://" in word or "https://" in word):
                 document_frequency += 1
 
     return ln(((len(documents) - document_frequency + 0.5) / (document_frequency + 0.5)) + 1)
 
+def get_lower_bound(rankings: list) -> int:
+
+    index = 0
+    min_val = min(set(x[1] for x in rankings))
+    while rankings[index][1] > min_val:
+        index += 1
+
+    return index - 1
 
 def rank(documents: [], query: str) -> []:
     scores = []
@@ -128,12 +136,13 @@ def search(query: str) -> list:
 
     rankings = bias(rankings, query)
 
-    return sorted(rankings, key=lambda item: item[1], reverse=True)
+    rankings = sorted(rankings, key=lambda item: item[1], reverse=True)
 
+    return rankings[0:get_lower_bound(rankings)]
 
 
 def main():
-    query = "http"
+    query = "ssh"
 
     print(f"The query is: {query}\n")
 

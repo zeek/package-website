@@ -18,9 +18,9 @@ html {
 
 body {
     min-height: 100vh;
+    background: var(--zeek-blue);
     font-family: var(--font-family);
     text-align: center;
-    background-image: url(/static/images/Hero-New-Home.png);
 }
 
 /* Nav Styling */

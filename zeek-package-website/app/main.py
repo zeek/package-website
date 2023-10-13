@@ -19,6 +19,22 @@ async def home(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
 
+@app.get("/packages", response_class=HTMLResponse)
+async def packages(request: Request):
+    sorted_packages = {}
+    result = p.get_packages()
+    for filename in result:
+        starting_char = filename[0].upper() if filename[0].isalpha() else "#"
+        if starting_char not in sorted_packages:
+            sorted_packages[starting_char] = []
+        sorted_packages[starting_char].append(filename)
+    sorted_packages = sorted(sorted_packages.items(), key=lambda x: x[0])
+    data = {
+        "packages": sorted_packages
+    }
+    return templates.TemplateResponse("packages.html", {"request": request, "data": data})
+
+
 # example created a dynamic page based on page name, this can be modified for our packages
 @app.get("/packages/{package_name}", response_class=HTMLResponse)
 async def package(request: Request, package_name: str):

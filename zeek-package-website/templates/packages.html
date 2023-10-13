@@ -1,0 +1,30 @@
+{% extends "template.html" %}
+
+{% block title %}
+Zeek Package Repository
+{% endblock %}
+
+{% block content %}
+<h1>Zeek Package Manager</h1>
+<div class="search-container">
+    <form method="POST" action="/search">
+        <input class="search-bar" type="text" name="query" placeholder="Search" /><button type="submit" class="submit-search"><i class="fa-solid fa-magnifying-glass"></i></button>
+    </form>
+</div>
+<div class="page-container">
+    <div class="packages-container">
+    {% for key, packages in data.packages %}
+    <div class="package-group">
+        <h2>{{ key }}</h2>
+        {% for package in packages %}
+        <div class="search-card">
+            <p class="package-text">
+            <a class="package-title" href="/packages/{{ package }}">{{ package }}</a>
+            </p>
+        </div>
+        {% endfor %}
+    </div>
+    {% endfor %}
+    </div>
+</div>
+{% endblock %}

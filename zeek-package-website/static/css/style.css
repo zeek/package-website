@@ -95,6 +95,18 @@ p {
     width: 60%;
 }
 
+.packages-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.package-group {
+    display: flex;
+    flex-direction: column;
+    width: 33.33%;
+}
+
 .package-text {
     text-align: left;
 }

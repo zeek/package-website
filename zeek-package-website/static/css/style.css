@@ -1,7 +1,7 @@
 /* Standard Variables */
 :root {
     --font-family: sans-serif;
-    --bold-font-weight: 700;
+    --bold-font-weight: 700px;
     --zeek-blue: #00AAE3;
 }
 
@@ -21,16 +21,6 @@ body {
     background: var(--zeek-blue);
     font-family: var(--font-family);
     text-align: center;
-}
-
-h1 {
-    margin: 6px;
-    padding: 6px;
-}
-
-p {
-    margin: 6px;
-    padding: 6px;
 }
 
 /* Nav Styling */
@@ -68,11 +58,6 @@ p {
     border-bottom: 2px solid;
 }
 
-.page-container {
-    justify-content: center;
-    align-items: center;
-}
-
 /* Search Bar Styling */
 .search-bar {
     border: none;
@@ -88,72 +73,43 @@ p {
     font-size: 18px;
 }
 
-.search-card {
-    padding: 24px;
-    margin: 18px auto;
-    background-color: #FFFFFF;
-    width: 60%;
-}
-
-.package-text {
-    text-align: left;
-}
-
-.package-title {
-    font-weight: var(--bold-font-weight);
-    text-decoration: none;
-    color: #000000;
-}
-
-.package-title:hover {
-    color: var(--zeek-blue);
-}
-
-.package-info-container {
-    display: flex;
-    justify-content: center;
-}
-
-.package-title-card {
-    background-color: #FFFFFF;
-    margin: 24px auto;
-    padding: 24px;
-    border-radius: 6px;
-    width: 65%;
-}
-
-.package-left-container {
-    width: 50%;
-}
-
-.package-right-container {
-    width: 50%;
-}
-
-.readme-container {
-    background-color: #FFFFFF;
-    border-radius: 6px;
-    margin: 6px auto;
+h1 {
+    margin: 6px;
     padding: 6px;
-    width: 45%;
 }
 
-.small-card {
-    background-color: #FFFFFF;
-    border-radius: 6px;
-    margin: 12px auto;
+h2 {
     padding: 6px;
-    min-height: 48px;
-    width: 50%
+    margin: 6px;
 }
-
 /* Footer Styling  */
 footer {
     bottom: 0;
+    position: absolute;
     margin: 3rem 0 0;
     padding: 1.5rem;
     width: 100%;
 }
 
 .copyright {
+    --font-family: sans-serif;
+    --bold-font-weight: 700px;
+    color : white;
+}
+
+/* Info Container Styling */
+.column-info-container {
+    float: left;
+    margin: 50px 5px 5px 5px;
+    width:32.55%;
+    background:#FFFFFF;
+    border-style: solid;
+    border-radius: 3px 3px;
+    padding: 30px;
+}
+
+.row-info-container:after {
+    content: "";
+    display: table;
+    clear: both;
 }

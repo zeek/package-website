@@ -87,11 +87,12 @@ footer {
     margin-right: 80px;
     padding: 50px;
     width: 80%;
-    color:azure;
+    color: black;
     outline-color: red;
     text-align: left;
     border-style: inset;
-    border-color: #000000;
+    border-color: black;
+    background: white;
 }
 .w3-card-4 b {
     font-size: 30px;

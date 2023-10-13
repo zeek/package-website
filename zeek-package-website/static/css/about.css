@@ -68,9 +68,6 @@ footer {
 }
 
 .copyright {
-    --font-family: sans-serif;
-    --bold-font-weight: 700px;
-    color : white;
 }
 
 /* about-zeek */
@@ -93,6 +90,8 @@ footer {
     color:azure;
     outline-color: red;
     text-align: left;
+    border-style: inset;
+    border-color: #000000;
 }
 .w3-card-4 b {
     font-size: 30px;

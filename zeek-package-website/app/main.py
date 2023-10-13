@@ -54,3 +54,8 @@ async def search(request: Request, query: str = Form(...)):
 @repeat_every(seconds=60 * 4)
 async def update_helper():
     update("aggregate.meta")
+    return templates.TemplateResponse("package-info.html", {"request": request, "data": data})
+
+@app.get("/about", response_class=HTMLResponse)
+async def home(request: Request):
+    return templates.TemplateResponse("about.html", {"request": request})

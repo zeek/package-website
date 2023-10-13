@@ -2,9 +2,11 @@ from fastapi import FastAPI, Form, Request
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
+from fastapi_utils.tasks import repeat_every
 
 from app.api.package import package as p
 from app.api.search import search as s
+from app.api.update import update
 
 import markdown
 
@@ -63,3 +65,9 @@ async def search(request: Request, query: str = Form(...)):
         "results": results
     }
     return templates.TemplateResponse("search.html", {"request": request, "data": data})
+
+
+@app.on_event("startup")
+@repeat_every(seconds=60 * 4)
+async def update_helper():
+    update("aggregate.meta")

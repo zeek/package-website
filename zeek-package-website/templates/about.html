@@ -39,15 +39,13 @@ Zeek Package Repository
     <button onclick="copyText()">
         <img src="/zeek-package-website/static/images/copy-logo.jpg">
     </button>
-</div>
-<div class="example">
-<script>
-    function copyText() {
+    <script>
+        function copyText() {
   
-        /* Copy text into clipboard */
-        navigator.clipboard.writeText
-            ("zkg install [-h] [--skiptests] [--nodeps] [--nosuggestions] [--version VERSION] [--force] [--user-var NAME=VAL] \ package [package ...]");
-    }
-</script>
+            /* Copy text into clipboard */
+            navigator.clipboard.writeText
+                ("zkg install [-h] [--skiptests] [--nodeps] [--nosuggestions] [--version VERSION] [--force] [--user-var NAME=VAL] \ package [package ...]");
+        }
+    </script>
 </div>
 {% endblock %}

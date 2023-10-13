@@ -37,7 +37,8 @@ Zeek Package Repository
     
     zkg install [-h] [--skiptests] [--nodeps] [--nosuggestions] [--version VERSION] [--force] [--user-var NAME=VAL] \ package [package ...]
     <button onclick="copyText()">
-        <img src="/zeek-package-website/static/images/copy-logo.jpg">
+        <img src="{{ url_for("static", path="images/copy-logo.jpg") }}"
+        />
     </button>
     <script>
         function copyText() {

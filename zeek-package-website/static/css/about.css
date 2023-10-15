@@ -83,8 +83,7 @@ footer {
 
 .w3-card-4 p {
     font-size: 20px;
-    margin-left: 80px;
-    margin-right: 80px;
+    margin: 5 auto;
     padding: 50px;
     width: 80%;
     color: black;

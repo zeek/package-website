@@ -84,7 +84,7 @@ footer {
 .w3-card-4 p {
     font-size: 20px;
     margin: 0 auto;
-    padding: 10px;
+    padding: 50px;
     width: 80%;
     color: black;
     outline-color: red;
@@ -113,8 +113,9 @@ footer {
     font-style: sans-serif;
     background: black;
     display:inline-block;
-    padding: 5px;
+    padding: 10px;
     background: white;
+    margin: 10px;
     
 }
 .gp {

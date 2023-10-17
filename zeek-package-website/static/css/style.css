@@ -97,14 +97,12 @@ p {
 
 .packages-container {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .package-group {
-    display: flex;
-    flex-direction: column;
-    width: 33.33%;
+    flex-direction: row;
 }
 
 .package-text {

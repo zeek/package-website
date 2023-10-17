@@ -48,4 +48,4 @@ Please read [CONTRIBUTING.md](https://www.github.com/zeek/package-website/blob/m
 
 ## Authors
 
-This website would not be possible without the six original creators: Akiel Aries, Cody Beck, David Knight, Nate Chan, and the entire Zeek Team.
+This website would not be possible without the six original creators: David Knight, Akiel Aries, Cody Beck, Nate Chan, and the entire Zeek Team.

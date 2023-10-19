@@ -137,6 +137,8 @@ p {
     padding: 6px;
     width: 40%;
     list-style-position: inside;
+    display:inline-block;
+    text-align: left;
 }
 
 .small-card {

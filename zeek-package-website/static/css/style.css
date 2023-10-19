@@ -119,15 +119,15 @@ p {
     margin: 24px auto;
     padding: 24px;
     border-radius: 6px;
-    width: 65%;
+    width: 80%;
 }
 
 .package-left-container {
-    width: 50%;
+    width: 40%;
 }
 
 .package-right-container {
-    width: 50%;
+    width: 40%;
 }
 
 .readme-container {
@@ -135,7 +135,8 @@ p {
     border-radius: 6px;
     margin: 6px auto;
     padding: 6px;
-    width: 45%;
+    width: 40%;
+    list-style-position: inside;
 }
 
 .small-card {

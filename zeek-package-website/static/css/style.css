@@ -95,6 +95,7 @@ p {
     width: 60%;
 }
 
+/* Package info styling */
 .package-text {
     text-align: left;
 }
@@ -124,13 +125,15 @@ p {
 
 .package-left-container {
     width: 40%;
-
 }
 
 .package-right-container {
     width: 40%;
 }
 
+h1 {
+    text-align: center;
+}
 .readme-container {
     background-color: #FFFFFF;
     border-radius: 6px;

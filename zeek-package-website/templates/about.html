@@ -1,0 +1,52 @@
+{% extends "template.html" %}
+
+{% block title %}
+Zeek Package Repository
+{% endblock %}
+
+{% block css %}
+<link href="{{ url_for("static", path="/css/about.css") }}" rel="stylesheet" />
+{% endblock %}
+
+{% block content %}
+<h1>Zeek Package Manager</h1>
+<div class="w3-card-4">
+    <h1>What is the Zeek Package Manager?</h1>
+    <p>
+        The Zeek Package Manager allows Zeek users to install third party scripts
+        and plugins. The Zeek Package Manager is a command line script which requires 
+        Zeek to be installed locally. This site allows users to browse the collection
+        of third party scripts and plugins available from the 
+        <a href="https://github.com/zeek/packages">Zeek Package Github</a>
+        Repository.
+    </p>
+
+</div>
+<div class="w3-card-4">
+    <h1>How to use:</h1>
+    <p>
+        Once you have found a package you want to install, use the 
+        <a href="https://docs.zeek.org/projects/package-manager/en/stable/quickstart.html">Quickstart Guide</a>
+        to install the zkg command line utility. Then use the 
+        <a href="https://docs.zeek.org/projects/package-manager/en/stable/zkg.html#install">install</a>
+        command to install your selected package:
+    </p>
+</div>
+<div class="example">
+    <span class="gp">$ </span>
+    
+    zkg install [-h] [--skiptests] [--nodeps] [--nosuggestions] [--version VERSION] [--force] [--user-var NAME=VAL] \ package [package ...]
+    <button onclick="copyText()">
+        <img src="{{ url_for("static", path="images/copy-logo.jpg") }}"
+        />
+    </button>
+    <script>
+        function copyText() {
+  
+            /* Copy text into clipboard */
+            navigator.clipboard.writeText
+                ("zkg install [-h] [--skiptests] [--nodeps] [--nosuggestions] [--version VERSION] [--force] [--user-var NAME=VAL] \ package [package ...]");
+        }
+    </script>
+</div>
+{% endblock %}

@@ -1,7 +1,7 @@
 /* Standard Variables */
 :root {
     --font-family: sans-serif;
-    --bold-font-weight: 700;
+    --bold-font-weight: 700px;
     --zeek-blue: #00AAE3;
 }
 
@@ -21,16 +21,6 @@ body {
     background: var(--zeek-blue);
     font-family: var(--font-family);
     text-align: center;
-}
-
-h1 {
-    margin: 6px;
-    padding: 6px;
-}
-
-p {
-    margin: 6px;
-    padding: 6px;
 }
 
 /* Nav Styling */
@@ -68,11 +58,6 @@ p {
     border-bottom: 2px solid;
 }
 
-.page-container {
-    justify-content: center;
-    align-items: center;
-}
-
 /* Search Bar Styling */
 .search-bar {
     border: none;
@@ -86,6 +71,11 @@ p {
     border-radius: 0 12px 12px 0;
     padding: 6px 10px;
     font-size: 18px;
+}
+
+h1 {
+    margin: 6px;
+    padding: 6px;
 }
 
 .search-card {
@@ -144,26 +134,40 @@ p {
     background-color: #FFFFFF;
     border-radius: 6px;
     margin: 6px auto;
-    padding: 6px;
-    width: 45%;
 }
 
-.small-card {
-    background-color: #FFFFFF;
-    border-radius: 6px;
-    margin: 12px auto;
+h2 {
     padding: 6px;
-    min-height: 48px;
-    width: 50%
+    margin: 6px;
 }
-
 /* Footer Styling  */
 footer {
     bottom: 0;
+    position: absolute;
     margin: 3rem 0 0;
     padding: 1.5rem;
     width: 100%;
 }
 
 .copyright {
+    --font-family: sans-serif;
+    --bold-font-weight: 700px;
+    color : white;
+}
+
+/* Info Container Styling */
+.column-info-container {
+    float: left;
+    margin: 50px 5px 5px 5px;
+    width:32.55%;
+    background:#FFFFFF;
+    border-style: solid;
+    border-radius: 3px 3px;
+    padding: 30px;
+}
+
+.row-info-container:after {
+    content: "";
+    display: table;
+    clear: both;
 }

@@ -124,6 +124,7 @@ p {
 
 .package-left-container {
     width: 40%;
+
 }
 
 .package-right-container {
@@ -133,21 +134,22 @@ p {
 .readme-container {
     background-color: #FFFFFF;
     border-radius: 6px;
-    margin: 6px auto;
+    margin: 10px 70px 0px 0.5px;
     padding: 6px;
-    width: 40%;
+    width: 45%;
     list-style-position: inside;
-    display:inline-block;
+    display:inline;
     text-align: left;
 }
 
 .small-card {
     background-color: #FFFFFF;
     border-radius: 6px;
-    margin: 12px auto;
+    margin: 10px 80px 10px;
     padding: 6px;
-    min-height: 48px;
-    width: 50%
+    min-height: 50px;
+    width: 75%;
+    float: inline-end;
 }
 
 /* Footer Styling  */

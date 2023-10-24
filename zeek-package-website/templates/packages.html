@@ -12,31 +12,14 @@ Zeek Package Repository
     </form>
 </div>
 <div class="page-container">
-    {% set group1 = data.packages[:data.packages|length//2] %}
-    {% set group2 = data.packages[data.packages|length//2:] %}
     <div class="packages-container">
-        {% for key, packages in group1 %}
+        {% for key, packages in data.packages %}
         <div class="package-group">
             <h2>{{ key }}</h2>
             {% for package in packages %}
             <div class="search-card">
                 <p class="package-text">
-                <a class="package-title" href="/packages/{{ package }}">{{ package }}</a>
-                </p>
-            </div>
-            {% endfor %}
-        </div>
-        {% endfor %}
-    </div>
-    
-    <div class="packages-container">
-        {% for key, packages in group2 %}
-        <div class="package-group">
-            <h2>{{ key }}</h2>
-            {% for package in packages %}
-            <div class="search-card">
-                <p class="package-text">
-                <a class="package-title" href="/packages/{{ package }}">{{ package }}</a>
+                <a class="package-title" href="/packages/{{ package | replace('.json', '') }}">{{ package | replace(".json", "") }}</a>
                 </p>
             </div>
             {% endfor %}

@@ -41,7 +41,7 @@ async def packages(request: Request):
 # example created a dynamic page based on page name, this can be modified for our packages
 @app.get("/packages/{package_name}", response_class=HTMLResponse)
 async def package(request: Request, package_name: str):
-    result = p.get_info(package_name)
+    result = p.get_info(package_name + ".json")
     if result is not None:
         readme = markdown.markdown(result["readme"])
     else:

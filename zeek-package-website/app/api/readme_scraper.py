@@ -8,7 +8,7 @@ fields = {"test_cmd": "test command", "build_cmd": "build command",
 
 
 def load_packages() -> []:
-    filepath = f"{os.getcwd()}/search/json_files"
+    filepath = f"{os.getcwd()}/../json_files"
 
     for filename in os.listdir(filepath):
         if ".json" in filename:

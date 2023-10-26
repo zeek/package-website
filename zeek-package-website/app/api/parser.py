@@ -180,7 +180,7 @@ class Parse(object):
         for item in self.pkg_dict.items():
             name = item[0].split("/")[1]
             name = name.strip("]")
-            with open(f"search/json_files/{name}.json", "w+",
+            with open(f"../json_files/{name}.json", "w+",
                       encoding="utf-8") as outfile:
                 outfile.write(json.dumps(item[1]))
 

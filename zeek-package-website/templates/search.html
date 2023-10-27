@@ -13,7 +13,7 @@ Zeek Package Repository
     <div class="search-card">
         <div class="package-text-container">
             <p class="package-text">
-            <a class="package-title" href="/packages/{{ result[0] }}">{{ result[0] }}</a>
+            <a class="package-title" href="/packages/{{ result[0] | replace('.json', '') }}">{{ result[0] | replace('.json', '') }}</a>
             </p>
         </div>
     </div>

@@ -1,51 +1,14 @@
-# Zeek Package Repository
+# Zeek Package Website Repository
+...
 
-Description Here
 
-## Getting Started
+### Running with Docker on the AWS Instance
 
-To get started with building a local copy of this website, simply clone this repository and ensure the necessary dependencies are downloaded.
-
-```
-git clone https://github.com/davidknight00/stockInfinity/
-```
-
-### Requirements
-
-Installing the dependencies can be done as shown below:
-
-```
-pip install -r requirements.txt
-```
-
-### Tests
-
-Unit testing can be done with the following command:
-
-```
-python3 fill test command
-```
-
-## Deployment
-
-Once the dependencies are successfully downloaded, this web app can be run locally through localhost as so:
-
-```
-uvicorn app.main:app --reload --port 8080
-```
-
-## Built With
-
-This website was build with FastAPI.
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://www.github.com/zeek/package-website/blob/master/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-**Version: 1.0.0**. We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/davidknight00/stockInfinity). 
-
-## Authors
-
-This website would not be possible without the six original creators: David Knight, Akiel Aries, Cody Beck, Nate Chan, and the entire Zeek Team.
+1. SSH into the AWS instance using `<user>@nau.zeek.org`.
+2. Run ```docker start website_container```. If the website is currently running in the container and you with to make some changes, first run
+```docker stop website_container```.
+3. Run ```docker exec -it website_container /bin/bash``` to access the container.
+4. Change into the proper directory with ```cd ~/package-website/zeek-package-website/```.
+5. Pull in any new changes with ```git pull```.
+6. Start the application with ```uvicorn app.main:app --host 0.0.0.0 --reload --timeout-keep-alive=65 --port 80```. We're running this server as a test instance, so you can just
+close your terminal window and everything will work as expected. Eventually, this will all be done with a docker-compose file.

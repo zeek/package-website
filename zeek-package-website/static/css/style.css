@@ -96,6 +96,10 @@ p {
 }
 
 /* Package info styling */
+h1 {
+    text-align: center;
+}
+
 .package-text {
     text-align: left;
 }
@@ -131,9 +135,7 @@ p {
     width: 40%;
 }
 
-h1 {
-    text-align: center;
-}
+
 .readme-container {
     background-color: #FFFFFF;
     border-radius: 5px;
@@ -145,6 +147,11 @@ h1 {
     list-style-position: inside;
     display:inline;
     text-align: left;
+}
+
+.readme-container img {
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .small-card {

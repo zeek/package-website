@@ -28,7 +28,7 @@ def get_info(package_name: str) -> Optional[dict]:
     >>> print(results)
     """
     project_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    json_files_dir = os.path.join(project_dir, "search", "json_files")
+    json_files_dir = os.path.join(project_dir, "..", "json_files")
     document_names = os.listdir(json_files_dir)
     if package_name in document_names:
         json_file = open(os.path.join(json_files_dir, package_name), "r")

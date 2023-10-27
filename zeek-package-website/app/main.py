@@ -19,7 +19,7 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 @app.get("/", response_class=HTMLResponse)
 async def home(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
-  
+
 
 @app.get("/about", response_class=HTMLResponse)
 async def about(request: Request):
@@ -56,7 +56,6 @@ async def package(request: Request, package_name: str):
         "package_info": result,
         "package_readme": readme
     }
-<<<<<<< HEAD
     # send users back to home page if package does not exist
     if result is not None:
         return templates.TemplateResponse("package-info.html", {"request": request, "data": data})
@@ -78,9 +77,3 @@ async def search(request: Request, query: str = Form(...)):
 @repeat_every(seconds=60 * 4)
 async def update_helper():
     update("aggregate.meta")
-=======
-    return templates.TemplateResponse("package-info.html", {"request": request, "data": data})
-
-@app.get("/about", response_class=HTMLResponse)
-async def home(request: Request):
-    return templates.TemplateResponse("about.html", {"request": request})

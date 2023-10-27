@@ -23,6 +23,17 @@ body {
     text-align: center;
 }
 
+h1 {
+    margin: 6px;
+    padding: 6px;
+    text-align: center;
+}
+
+h2 {
+    padding: 6px;
+    margin: 6px;
+}
+
 /* Nav Styling */
 .nav-bar {
     display: flex;
@@ -71,12 +82,6 @@ body {
     border-radius: 0 12px 12px 0;
     padding: 6px 10px;
     font-size: 18px;
-}
-
-h1 {
-    margin: 6px;
-    padding: 6px;
-    text-align: center;
 }
 
 .search-card {
@@ -132,7 +137,6 @@ h1 {
     width: 40%;
 }
 
-
 .readme-container {
     background-color: #FFFFFF;
     border-radius: 5px;
@@ -164,10 +168,6 @@ h1 {
     margin: 6px auto;
 }
 
-h2 {
-    padding: 6px;
-    margin: 6px;
-}
 /* Footer Styling  */
 footer {
     bottom: 0;

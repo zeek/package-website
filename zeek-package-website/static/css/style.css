@@ -23,17 +23,6 @@ body {
     text-align: center;
 }
 
-h1 {
-    margin: 6px;
-    padding: 6px;
-    text-align: center;
-}
-
-h2 {
-    padding: 6px;
-    margin: 6px;
-}
-
 /* Nav Styling */
 .nav-bar {
     display: flex;
@@ -84,6 +73,11 @@ h2 {
     font-size: 18px;
 }
 
+h1 {
+    margin: 6px;
+    padding: 6px;
+}
+
 .search-card {
     padding: 24px;
     margin: 18px auto;
@@ -91,7 +85,6 @@ h2 {
     width: 60%;
 }
 
-/* Package info styling */
 .packages-container {
     display: flex;
     flex-direction: column;
@@ -126,52 +119,31 @@ h2 {
     margin: 24px auto;
     padding: 24px;
     border-radius: 6px;
-    width: 80%;
+    width: 65%;
 }
 
 .package-left-container {
-    width: 40%;
+    width: 50%;
 }
 
 .package-right-container {
-    width: 40%;
+    width: 50%;
 }
 
 .readme-container {
     background-color: #FFFFFF;
-    border-radius: 5px;
-    margin-top: 10px;
-    margin-left: auto;
-    margin-right: 152px;
-    padding: 6px;
-    width: 45%;
-    list-style-position: inside;
-    display:inline;
-    text-align: left;
-}
-
-.readme-container img {
-    max-width: 100%;
-    max-height: 100%;
-}
-
-.small-card {
-    background-color: #FFFFFF;
-    border-radius: 6px;
-    margin-top: 10px;
-    margin-right: -30px;
-    padding: 6px;
-    min-height: 50px;
-    width: 80%;
-    float: inline-end;
     border-radius: 6px;
     margin: 6px auto;
 }
 
+h2 {
+    padding: 6px;
+    margin: 6px;
+}
 /* Footer Styling  */
 footer {
     bottom: 0;
-    position: relative;
+    position: absolute;
     margin: 3rem 0 0;
     padding: 1.5rem;
     width: 100%;

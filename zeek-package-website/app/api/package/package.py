@@ -36,3 +36,10 @@ def get_info(package_name: str) -> Optional[dict]:
         return json_data
     else:
         return None
+
+
+def get_packages():
+    project_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    json_files_dir = os.path.join(project_dir, "search", "json_files")
+    document_names = os.listdir(json_files_dir)
+    return document_names

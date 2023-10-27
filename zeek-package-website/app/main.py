@@ -19,12 +19,34 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 @app.get("/", response_class=HTMLResponse)
 async def home(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
+  
+
+@app.get("/about", response_class=HTMLResponse)
+async def about(request: Request):
+    return templates.TemplateResponse("about.html", {"request": request})
+
+
+@app.get("/packages", response_class=HTMLResponse)
+async def packages(request: Request):
+    sorted_packages = {}
+    result = p.get_packages()
+    for filename in result:
+        starting_char = filename[0].upper() if filename[0].isalpha() else "#"
+        if starting_char not in sorted_packages:
+            sorted_packages[starting_char] = []
+        sorted_packages[starting_char].append(filename)
+    sorted_packages = sorted(sorted_packages.items(), key=lambda x: x[0])
+    print(type(sorted_packages))
+    data = {
+        "packages": sorted_packages
+    }
+    return templates.TemplateResponse("packages.html", {"request": request, "data": data})
 
 
 # example created a dynamic page based on page name, this can be modified for our packages
 @app.get("/packages/{package_name}", response_class=HTMLResponse)
 async def package(request: Request, package_name: str):
-    result = p.get_info(package_name)
+    result = p.get_info(package_name + ".json")
     if result is not None:
         readme = markdown.markdown(result["readme"])
     else:
@@ -50,6 +72,7 @@ async def search(request: Request, query: str = Form(...)):
         "results": results
     }
     return templates.TemplateResponse("search.html", {"request": request, "data": data})
+
 
 @app.on_event("startup")
 @repeat_every(seconds=60 * 4)

@@ -1,0 +1,135 @@
+/* Standard Variables */
+:root {
+    --font-family: sans-serif;
+    --bold-font-weight: 700px;
+    --zeek-blue: #00AAE3;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* CSS Resets */
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: var(--zeek-blue);
+    font-family: var(--font-family);
+    text-align: center;
+}
+
+/* Nav Styling */
+.nav-bar {
+    display: flex;
+    overflow: hidden;
+    align-items: center;
+    justify-content: space-between;
+    top: 0;
+    margin: 0 0 3rem;
+    padding: 1.5rem 3.5rem;
+    width: 100%;
+    background-color: #FFFFFF;
+}
+
+.top-nav {
+    display: flex;
+    gap: 2rem;
+    list-style-type: none;
+}
+
+.top-nav li {
+    font-size: 18px;
+    font-weight: var(--bold-font-weight);
+}
+
+.nav-link {
+    transition: 0.3s;
+    text-decoration: none;
+    color: #000000;
+}
+
+.nav-link:hover {
+    color: var(--zeek-blue);
+    border-bottom: 2px solid;
+}
+
+/* Footer Styling  */
+footer {
+    bottom: 0;
+    position:relative;
+    margin: 3rem 0 0;
+    padding: 1.5rem;
+    width: 100%;
+}
+
+.copyright {
+}
+
+/* about-zeek */
+.w3-card-4 {
+    margin-left: 300;
+    --font-family: sans-serif;
+
+}
+.w3-card-4 h1 {
+    font-size:50px;
+    font-weight: 550;
+}
+
+.w3-card-4 p {
+    font-size: 20px;
+    margin: 0 auto;
+    padding: 50px;
+    width: 80%;
+    color: black;
+    outline-color: red;
+    text-align: left;
+    border-style: inset;
+    border-color: black;
+    background: white;
+}
+.w3-card-4 b {
+    font-size: 30px;
+    color:azure;
+    text-align: left;
+}
+.aw3-card-4 img {
+    margin-left: 10px;
+    margin-right: 10px;
+    
+}
+
+.w3-card-4 a:hover {
+    color: var(--zeek-blue);
+    outline-color: black;
+}
+
+.example {
+    font-style: sans-serif;
+    background: black;
+    display:inline-block;
+    padding: 10px;
+    background: white;
+    margin: 10px;
+    
+}
+.gp {
+color:#c65d09;
+}
+
+.example button {
+    margin-left: 30px;
+}
+.example img {
+    width:20px;
+    height: 20px;
+}
+
+.search-container {
+    margin-bottom: 50px;
+}

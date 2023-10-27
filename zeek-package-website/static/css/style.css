@@ -23,6 +23,17 @@ body {
     text-align: center;
 }
 
+h1 {
+    margin: 6px;
+    padding: 6px;
+    text-align: center;
+}
+
+h2 {
+    padding: 6px;
+    margin: 6px;
+}
+
 /* Nav Styling */
 .nav-bar {
     display: flex;
@@ -73,19 +84,94 @@ body {
     font-size: 18px;
 }
 
-h1 {
-    margin: 6px;
-    padding: 6px;
+.search-card {
+    padding: 24px;
+    margin: 18px auto;
+    background-color: #FFFFFF;
+    width: 60%;
 }
 
-h2 {
-    padding: 6px;
-    margin: 6px;
+/* Package info styling */
+.packages-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
+
+.package-group {
+    flex-direction: row;
+}
+
+.package-text {
+    text-align: left;
+}
+
+.package-title {
+    font-weight: var(--bold-font-weight);
+    text-decoration: none;
+    color: #000000;
+}
+
+.package-title:hover {
+    color: var(--zeek-blue);
+}
+
+.package-info-container {
+    display: flex;
+    justify-content: center;
+}
+
+.package-title-card {
+    background-color: #FFFFFF;
+    margin: 24px auto;
+    padding: 24px;
+    border-radius: 6px;
+    width: 80%;
+}
+
+.package-left-container {
+    width: 40%;
+}
+
+.package-right-container {
+    width: 40%;
+}
+
+.readme-container {
+    background-color: #FFFFFF;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: 152px;
+    padding: 6px;
+    width: 45%;
+    list-style-position: inside;
+    display:inline;
+    text-align: left;
+}
+
+.readme-container img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.small-card {
+    background-color: #FFFFFF;
+    border-radius: 6px;
+    margin-top: 10px;
+    margin-right: -30px;
+    padding: 6px;
+    min-height: 50px;
+    width: 80%;
+    float: inline-end;
+    border-radius: 6px;
+    margin: 6px auto;
+}
+
 /* Footer Styling  */
 footer {
     bottom: 0;
-    position: absolute;
+    position: relative;
     margin: 3rem 0 0;
     padding: 1.5rem;
     width: 100%;

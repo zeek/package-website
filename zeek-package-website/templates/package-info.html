@@ -7,7 +7,7 @@ Zeek Package Repository
 {% block content %}
 <div class="page-container">
     <div class="package-title-card">
-        <h1 class="package-text">{{ data.package_name|replace('.json', '') }} <small>version: {{ data.package_info["version"] }}</small></h1>
+        <h1 class="package-text">{{ data.package_name }} <small>version: {{ data.package_info["version"] }}</small></h1>
         {% if data.package_info["description"] is not none %}
         <p class="package-text">{{ data.package_info["description"] }}</p>
         {% endif %}
@@ -25,7 +25,7 @@ Zeek Package Repository
             </div>
             <div class="small-card">
                 <h2>Build Command</h2>
-                <code>{{ data.package_info["build_cmd"] if data.package_info["build_cmd"] is not none else "No Build Command" }}</code>
+                <code>{{ data.package_info["build_cmd"] if data.package_info["build_cmd"] is not none else "No Test Command" }}</code>
             </div>
             <div class="small-card">
                 <h2>Repository</h2>

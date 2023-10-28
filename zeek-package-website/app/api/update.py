@@ -2,6 +2,7 @@
 
 import subprocess
 from app.api.parser import Parse
+from app.api.readme_scraper import load_packages
 import os
 
 
@@ -14,7 +15,8 @@ def update(file: str):
         print("Parsing")
         parse = Parse(f"{dir_path}/{file}")
         parse.parse_data()
-        parse.dump
+        parse.dump()
+        load_packages()
         print("Parsed")
     else:
         print(std_out)

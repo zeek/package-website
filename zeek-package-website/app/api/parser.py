@@ -4,7 +4,7 @@ Parser utility for scraping values from aggragate.meta
 import re
 import requests
 import json
-
+import os
 
 class Parse(object):
     def __init__(self, file):
@@ -180,7 +180,9 @@ class Parse(object):
         for item in self.pkg_dict.items():
             name = item[0].split("/")[1]
             name = name.strip("]")
-            with open(f"search/json_files/{name}.json", "w+",
+            project_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+            json_files_dir = os.path.join(project_dir, "api", "search", "json_files")
+            with open(f"{json_files_dir}/{name}.json", "w+",
                       encoding="utf-8") as outfile:
                 outfile.write(json.dumps(item[1]))
 

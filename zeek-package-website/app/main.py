@@ -76,4 +76,6 @@ async def search(request: Request, query: str = Form(...)):
 @app.on_event("startup")
 @repeat_every(seconds=60 * 4)
 async def update_helper():
+    n_calls = 0
     update("aggregate.meta")
+    n_calls += 1

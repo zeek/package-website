@@ -15,7 +15,6 @@ app = FastAPI()
 templates = Jinja2Templates(directory="templates")
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
-
 @app.get("/", response_class=HTMLResponse)
 async def home(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
@@ -76,6 +75,4 @@ async def search(request: Request, query: str = Form(...)):
 @app.on_event("startup")
 @repeat_every(seconds=60 * 4)
 async def update_helper():
-    n_calls = 0
-    update("aggregate.meta", n_calls)
-    n_calls += 1
+    update("aggregate.meta")

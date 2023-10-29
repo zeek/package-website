@@ -10,7 +10,7 @@ fields = {"test_cmd": "test command", "build_cmd": "build command",
 def load_packages() -> []:
     project_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     filepath = os.path.join(project_dir, "search", "json_files")
-
+    print("loading")
     for filename in os.listdir(filepath):
         if ".json" in filename:
             package_json = None

@@ -6,7 +6,7 @@ from app.api.readme_scraper import load_packages
 import os
 
 
-def update(file: str), n_calls: int:
+def update(file: str, n_calls: int):
     dir_path = os.path.dirname(os.path.realpath(__file__))
     std_out = subprocess.run(["git", "-C", dir_path, "pull", "origin", "main"],
                              capture_output=True).stdout.decode("utf-8")

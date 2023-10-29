@@ -6,12 +6,12 @@ from app.api.readme_scraper import load_packages
 import os
 
 
-def update(file: str):
+def update(file: str), n_calls: int:
     dir_path = os.path.dirname(os.path.realpath(__file__))
     std_out = subprocess.run(["git", "-C", dir_path, "pull", "origin", "main"],
                              capture_output=True).stdout.decode("utf-8")
 
-    if 'Already up to date.\n' not in std_out:
+    if 'Already up to date.\n' not in std_out or n_calls == 0: 
         print("Parsing")
         parse = Parse(f"{dir_path}/{file}")
         parse.parse_data()

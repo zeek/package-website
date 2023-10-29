@@ -72,7 +72,8 @@ class Parse(object):
             self.script_dir = self.get_line("script_dir", header)
             self.plugin_dir = self.get_line("plugin_dir", header)
             self.readme = self.get_readme()
-            self.get_images()
+            if self.readme is not None and self.url is not None:
+                self.get_images()
 
             self.pkg_dict[self.section_header] = {
                 "description": self.description,

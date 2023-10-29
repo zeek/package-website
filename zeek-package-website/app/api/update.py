@@ -16,7 +16,6 @@ def update(file: str, n_calls: int):
         parse = Parse(f"{dir_path}/{file}")
         parse.parse_data()
         parse.dump()
-        load_packages()
         print("Parsed")
     else:
         print(std_out)

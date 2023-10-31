@@ -207,7 +207,7 @@ class Parse(object):
         request_url = f"https://raw.githubusercontent.com/{name}/master"
 
         # if packages have other forms of readme add to this list
-        filenames = ["README.md", "readme.md", "README", "readme", "Readme.md"
+        filenames = ["README.md", "readme.md", "README", "readme", "Readme.md",
                      "Readme", "README.rst", "Readme.rst", "readme.rst"]
         counter = 1
 
@@ -217,6 +217,7 @@ class Parse(object):
         while not get_request.ok and counter < len(filenames):
             readme_ext = filenames[counter]
             get_request = requests.get(f"{request_url}/{readme_ext}")
+            print(f"{request_url}/{readme_ext}")
             counter += 1
 
         # check for special case, as one package uses gitlab

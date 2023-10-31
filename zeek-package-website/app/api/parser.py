@@ -4,7 +4,7 @@ Parser utility for scraping values from aggragate.meta
 import re
 import requests
 import json
-
+import os
 
 class Parse(object):
     def __init__(self, file):
@@ -72,6 +72,8 @@ class Parse(object):
             self.script_dir = self.get_line("script_dir", header)
             self.plugin_dir = self.get_line("plugin_dir", header)
             self.readme = self.get_readme()
+            if self.readme is not None and self.url is not None:
+                self.get_images()
 
             self.pkg_dict[self.section_header] = {
                 "description": self.description,
@@ -180,7 +182,9 @@ class Parse(object):
         for item in self.pkg_dict.items():
             name = item[0].split("/")[1]
             name = name.strip("]")
-            with open(f"search/json_files/{name}.json", "w+",
+            project_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+            json_files_dir = os.path.join(project_dir, "api", "search", "json_files")
+            with open(f"{json_files_dir}/{name}.json", "w+",
                       encoding="utf-8") as outfile:
                 outfile.write(json.dumps(item[1]))
 
@@ -224,6 +228,31 @@ class Parse(object):
 
         return get_request.content.decode("utf-8")
 
+    def get_images(self):
+        url = self.url
+        readme = self.readme
+
+        url = url.replace(".git", "")
+        url = url.replace("https://github.com",
+                          "https://raw.githubusercontent.com")
+
+        if url[-1] != "/":
+            url += "/"
+
+        url += "master/"
+
+        readme = readme.replace('src="', f'src="{url}')
+
+        readme = readme.split("(")
+
+        for i in range(0, len(readme)-1):
+            if(readme[i].endswith("]") and not readme[i+1].startswith("https://")):
+                readme[i+1] = ''.join([url, readme[i+1]])
+
+        readme = "(".join(readme)
+
+        self.readme = readme
+
 
 def main():
     file = 'aggregate.meta'
@@ -232,7 +261,6 @@ def main():
     # print the parsed data
     #parser.print_data()
     parser.parse_data()
-
     parser.dump()
 
     # Access the pkg_dict dictionary to print the extracted package data

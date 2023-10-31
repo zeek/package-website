@@ -1,1 +1,0 @@
-{"description": "This plugin provides liblognorm integration for Zeek.", "tags": "zeek plugin, liblognorm, syslog", "version": "1.0.0", "depends": null, "test_cmd": "cd tests && btest -d", "build_cmd": "./configure && make", "url": "https://github.com/J-Gras/bro-lognorm", "summary": null, "script_dir": "scripts/lognorm", "plugin_dir": "build/Zeek_Lognorm.tgz", "readme": "README"}

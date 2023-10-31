@@ -35,7 +35,6 @@ async def packages(request: Request):
             sorted_packages[starting_char] = []
         sorted_packages[starting_char].append(filename)
     sorted_packages = sorted(sorted_packages.items(), key=lambda x: x[0])
-    print(type(sorted_packages))
     data = {
         "packages": sorted_packages
     }

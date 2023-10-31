@@ -9,7 +9,7 @@ from app.api.search import search as s
 from app.api.update import update
 
 import markdown
-
+import mistune
 
 app = FastAPI()
 templates = Jinja2Templates(directory="templates")
@@ -48,7 +48,7 @@ async def packages(request: Request):
 async def package(request: Request, package_name: str):
     result = p.get_info(package_name + ".json")
     if result is not None:
-        readme = markdown.markdown(result["readme"])
+        readme = mistune.html(result["readme"])
     else:
         readme = "<p>This package does not appear to have a README</p>"
     data = {

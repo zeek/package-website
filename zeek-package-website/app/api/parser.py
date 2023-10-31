@@ -217,7 +217,6 @@ class Parse(object):
         while not get_request.ok and counter < len(filenames):
             readme_ext = filenames[counter]
             get_request = requests.get(f"{request_url}/{readme_ext}")
-            print(f"{request_url}/{readme_ext}")
             counter += 1
 
         # check for special case, as one package uses gitlab

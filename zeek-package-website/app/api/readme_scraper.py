@@ -10,12 +10,10 @@ fields = {"test_cmd": "test command", "build_cmd": "build command",
 def load_packages() -> []:
     project_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     filepath = os.path.join(project_dir, "search", "json_files")
-    
-
+    print("loading")
     for filename in os.listdir(filepath):
         if ".json" in filename:
             package_json = None
-            changes = 0
             with open(f"{filepath}/{filename}", "r", encoding="utf-8") as file:
                 package_json = json.load(file)
                 if package_json["readme"] is not None:
@@ -24,12 +22,12 @@ def load_packages() -> []:
                         item = get_field(package_json["readme"], field)
                         if item is not None:
                             package_json[field] = item
-                            changes += 1
+                    package_json["readme"] = get_images(package_json["readme"],
+                                                        package_json["url"])
 
-            if changes > 0:
-                with open(f"{filepath}/{filename}",
-                          "w+", encoding="utf-8") as file:
-                    json.dump(package_json, file)
+            with open(f"{filepath}/{filename}", "w+",
+                      encoding="utf-8") as file:
+                json.dump(package_json, file)
 
 
 def find_missing(package: dict) -> []:
@@ -59,3 +57,25 @@ def get_field(readme: str, field: str) -> str:
 
     return None
 
+
+def get_images(readme, url):
+    url = url.replace(".git", "")
+    url = url.replace("https://github.com",
+                      "https://raw.githubusercontent.com")
+
+    if url[-1] != "/":
+        url += "/"
+
+    url += "master/"
+
+    readme = readme.replace('src="', f'src="{url}')
+
+    readme = readme.split("(")
+
+    for i in range(0, len(readme)-1):
+        if(readme[i].endswith("]") and not readme[i+1].startswith("https://")):
+            readme[i+1] = ''.join([url, readme[i+1]])
+
+    readme = "(".join(readme)
+
+    return readme

@@ -11,7 +11,7 @@ def update(file: str):
     std_out = subprocess.run(["git", "-C", dir_path, "pull", "origin", "main"],
                              capture_output=True).stdout.decode("utf-8")
 
-    if 'Already up to date.\n' not in std_out:
+    if 'Already up to date.\n' not in std_out: 
         print("Parsing")
         parse = Parse(f"{dir_path}/{file}")
         parse.parse_data()
@@ -20,7 +20,6 @@ def update(file: str):
         print("Parsed")
     else:
         print(std_out)
-
 
 def main():
     update("aggregate.meta")

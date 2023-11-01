@@ -72,6 +72,8 @@ class Parse(object):
             self.script_dir = self.get_line("script_dir", header)
             self.plugin_dir = self.get_line("plugin_dir", header)
             self.readme = self.get_readme()
+            if self.readme is not None and self.url is not None:
+                self.get_images()
 
             self.pkg_dict[self.section_header] = {
                 "description": self.description,
@@ -205,7 +207,7 @@ class Parse(object):
         request_url = f"https://raw.githubusercontent.com/{name}/master"
 
         # if packages have other forms of readme add to this list
-        filenames = ["README.md", "readme.md", "README", "readme", "Readme.md"
+        filenames = ["README.md", "readme.md", "README", "readme", "Readme.md",
                      "Readme", "README.rst", "Readme.rst", "readme.rst"]
         counter = 1
 
@@ -226,6 +228,31 @@ class Parse(object):
 
         return get_request.content.decode("utf-8")
 
+    def get_images(self):
+        url = self.url
+        readme = self.readme
+
+        url = url.replace(".git", "")
+        url = url.replace("https://github.com",
+                          "https://raw.githubusercontent.com")
+
+        if url[-1] != "/":
+            url += "/"
+
+        url += "master/"
+
+        readme = readme.replace('src="', f'src="{url}')
+
+        readme = readme.split("(")
+
+        for i in range(0, len(readme)-1):
+            if(readme[i].endswith("]") and not readme[i+1].startswith("https://")):
+                readme[i+1] = ''.join([url, readme[i+1]])
+
+        readme = "(".join(readme)
+
+        self.readme = readme
+
 
 def main():
     file = 'aggregate.meta'
@@ -234,7 +261,6 @@ def main():
     # print the parsed data
     #parser.print_data()
     parser.parse_data()
-
     parser.dump()
 
     # Access the pkg_dict dictionary to print the extracted package data

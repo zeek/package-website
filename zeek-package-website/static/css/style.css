@@ -140,7 +140,7 @@ h2 {
 .readme-container {
     background-color: #FFFFFF;
     border-radius: 5px;
-    margin: 10px 100px auto 10px;
+    margin: 10px 152px auto auto;
     padding: 6px;
     width: 45%;
     list-style-position: inside;
@@ -156,7 +156,7 @@ h2 {
 .small-card {
     background-color: #FFFFFF;
     border-radius: 6px;
-    margin: 10px 50px auto 10px;
+    margin: 10px -30px auto auto; 
     padding: 6px;
     min-height: 50px;
     width: 80%;

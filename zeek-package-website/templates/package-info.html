@@ -7,7 +7,7 @@ Zeek Package Repository
 {% block content %}
 <div class="page-container">
     <div class="package-title-card">
-        <h1 class="package-text">{{ data.package_name|replace('.json', '') }} <small>version: {{ data.package_info["version"] }}</small></h1>
+        <h1 class="package-text"><a href="{{ data.package_info["url"] }}">{{ data.package_name|replace('.json', '') }}</a> <small>version: {{ data.package_info["version"] }}</small></h1>
         {% if data.package_info["description"] is not none %}
         <p class="package-text">{{ data.package_info["description"] }}</p>
         {% endif %}

@@ -10,4 +10,5 @@ python-multipart
 jinja2
 fastapi_utils
 mistune
+markdown
 pytest

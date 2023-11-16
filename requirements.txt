@@ -1,0 +1,14 @@
+fastapi
+joblib
+uvicorn
+loguru
+numpy
+requests
+python-dotenv
+aiofiles
+python-multipart
+jinja2
+fastapi_utils
+mistune
+markdown
+pytest

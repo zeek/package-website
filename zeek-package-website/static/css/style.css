@@ -153,6 +153,10 @@ h2 {
     max-height: 100%;
 }
 
+.readme-container h1 {
+    overflow: hidden;
+}
+
 .small-card {
     background-color: #FFFFFF;
     border-radius: 6px;

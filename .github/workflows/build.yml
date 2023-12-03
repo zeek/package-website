@@ -3,9 +3,10 @@ name: Build
 
 on:
   push:
-    branches:
-      # any branch
-      - '**'
+    paths:
+      # changes to files
+      - '**.{html,css,py,yml,yaml}'
+      - 'Dockerfile'
 
 jobs:
   test:

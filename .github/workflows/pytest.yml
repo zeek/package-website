@@ -27,5 +27,5 @@ jobs:
 
     - name: Run Unit Tests
       run: |
-        cd zeek-package-website && pytest -s tests/test_parser.py 
+        cd zeek-package-website && pytest -s --showlocals tests/test_parser.py 
 

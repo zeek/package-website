@@ -3,10 +3,9 @@ name: Test Suite
 
 on:
   push:
-    paths:
-      # changes to files
-      - '**.{html,css,py,yml,yaml}'
-      - 'Dockerfile'
+    branches:
+      # any branch
+      - '**'
 
 jobs:
   test:

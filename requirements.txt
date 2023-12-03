@@ -12,3 +12,4 @@ fastapi_utils
 mistune
 markdown
 pytest
+requests

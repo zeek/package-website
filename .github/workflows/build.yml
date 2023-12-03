@@ -1,0 +1,26 @@
+# RUNS TEST SUITE
+name: Build
+
+on:
+  push:
+    branches:
+      # any branch
+      - '**'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Build Docker Image
+      run: docker build -t zeek_website . --no-cache
+
+    - name: Start Docker Service
+      run: docker-compose up -d
+
+    - name: Stop Docker Service
+      run: docker-compose down
+

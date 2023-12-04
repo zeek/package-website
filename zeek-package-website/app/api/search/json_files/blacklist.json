@@ -1,1 +1,0 @@
-{"description": "package to manage blacklisted IP address ysing bro", "tags": "blacklist", "version": "master", "depends": null, "test_cmd": null, "build_cmd": null, "url": "https://github.com/initconf/blacklist", "summary": null, "script_dir": "scripts", "plugin_dir": null, "readme": "# blacklist\n"}

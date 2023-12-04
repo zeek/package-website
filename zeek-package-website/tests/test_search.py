@@ -20,7 +20,7 @@ class TestRank:
         documents.append(data)
         text_file.close()
 
-    file = open(f"{project_dir}/tests/http_rankings", "rb")
+    file = open(f"{project_dir}/http_rankings", "rb")
     saved_rankings = pickle.load(file)
     file.close()
     rankings = s.rank(documents, query)

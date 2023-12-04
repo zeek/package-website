@@ -10,7 +10,7 @@ class TestRank:
     query = "http"
     documents = []
     project_dir = os.path.dirname(os.path.abspath(__file__))
-    json_files_dir = os.path.join(project_dir, "app/api/search/json_files")
+    json_files_dir = os.path.join(project_dir, "../app/api/search/json_files")
     document_names = os.listdir(json_files_dir)
     for name in document_names:
         text_file = open(os.path.join(json_files_dir, name), "r")
@@ -20,7 +20,7 @@ class TestRank:
         documents.append(data)
         text_file.close()
 
-    file = open("tests/http_rankings", "rb")
+    file = open(f"{project_dir}/tests/http_rankings", "rb")
     saved_rankings = pickle.load(file)
     file.close()
     rankings = s.rank(documents, query)

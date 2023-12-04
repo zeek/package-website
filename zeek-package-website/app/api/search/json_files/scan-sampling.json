@@ -1,0 +1,1 @@
+{"description": "Modified version of scan.bro to add destination IP sampling.", "tags": "sumstats", "version": "0.1.0", "depends": null, "test_cmd": null, "build_cmd": null, "url": "https://github.com/JonZeolla/scan-sampling", "summary": null, "script_dir": "scripts", "plugin_dir": null, "readme": null}

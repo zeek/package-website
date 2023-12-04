@@ -60,33 +60,34 @@ class Parse(object):
 
             # extract our desired fields
             # TODO: pass in header + text to look for
-            self.author = self.get_line("credits", header)
-            self.description = self.get_line("description", header)
-            self.tags = self.get_line("tags", header)
-            self.version = self.get_line("version", header)
-            self.get_next("depends", header)
-            self.test_cmd = self.get_line("test_command", header)
-            self.build_cmd = self.get_line("build_command", header)
-            self.url = self.get_line("url", header)
-            self.summary = self.get_line("summary", header)
-            self.script_dir = self.get_line("script_dir", header)
-            self.plugin_dir = self.get_line("plugin_dir", header)
-            self.readme = self.get_readme()
+            self.author         = self.get_line("credits", header)
+            self.description    = self.get_line("description", header)
+            self.tags           = self.get_line("tags", header)
+            self.version        = self.get_line("version", header)
+            self.depends        = self.get_next("depends", header)
+            self.test_cmd       = self.get_line("test_command", header)
+            self.build_cmd      = self.get_line("build_command", header)
+            self.url            = self.get_line("url", header)
+            self.summary        = self.get_line("summary", header)
+            self.script_dir     = self.get_line("script_dir", header)
+            self.plugin_dir     = self.get_line("plugin_dir", header)
+            self.readme         = self.get_readme()
+
             if self.readme is not None and self.url is not None:
                 self.get_images()
 
             self.pkg_dict[self.section_header] = {
-                "description": self.description,
-                "tags": self.tags,
-                "version": self.version,
-                "depends": self.depends,
-                "test_cmd": self.test_cmd,
-                "build_cmd": self.build_cmd,
-                "url": self.url,
-                "summary": self.summary,
-                "script_dir": self.script_dir,
-                "plugin_dir": self.plugin_dir,
-                "readme": self.readme
+                "description"   : self.description,
+                "tags"          : self.tags,
+                "version"       : self.version,
+                "depends"       : self.depends,
+                "test_cmd"      : self.test_cmd,
+                "build_cmd"     : self.build_cmd,
+                "url"           : self.url,
+                "summary"       : self.summary,
+                "script_dir"    : self.script_dir,
+                "plugin_dir"    : self.plugin_dir,
+                "readme"        : self.readme
             }
 
 
@@ -94,8 +95,6 @@ class Parse(object):
             self.section_count += 1
 
         return self.pkg_dict
-
-
 
     def get_name(self) -> str:
         """
@@ -148,8 +147,8 @@ class Parse(object):
 
         if next_match:
             next_line = next_match.group(1).strip().split('\n')
-            # remove tabs
-            next_line = [ln.replace('\t', '') for ln in next_line]
+            # remove tabs and leading spaces
+            next_line = [ln.replace('\t', '').lstrip() for ln in next_line]
         else:
             next_line = None
 

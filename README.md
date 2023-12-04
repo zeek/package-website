@@ -1,3 +1,7 @@
+[![Build](https://github.com/zeek/package-website/actions/workflows/build.yml/badge.svg)](https://github.com/zeek/package-website/actions/workflows/build.yml)
+[![Test Suite](https://github.com/zeek/package-website/actions/workflows/pytest.yml/badge.svg)](https://github.com/zeek/package-website/actions/workflows/pytest.yml)
+[![license](https://img.shields.io/github/license/zeek/package-website?color=23228B22)](https://github.com/zeek/package-website/blob/main/LICENSE)
+
 # Zeek Package Website Repository
 ...
 

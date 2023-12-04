@@ -72,8 +72,6 @@ class Parse(object):
             self.script_dir = self.get_line("script_dir", header)
             self.plugin_dir = self.get_line("plugin_dir", header)
             self.readme = self.get_readme()
-            if self.readme is not None and self.url is not None:
-                self.get_images()
 
             self.pkg_dict[self.section_header] = {
                 "description": self.description,
@@ -219,6 +217,9 @@ class Parse(object):
             get_request = requests.get(f"{request_url}/{readme_ext}")
             counter += 1
 
+        if(name == 'corelight/zeek-community-id'):
+            print(f"URL: {get_request.url}")
+            print(f"Content: {get_request.content}")
         # check for special case, as one package uses gitlab
         if "https://gitlab.com" in name:
             get_request = requests.get(f"{name}/-/raw/master/README.md")
@@ -227,31 +228,6 @@ class Parse(object):
             return None
 
         return get_request.content.decode("utf-8")
-
-    def get_images(self):
-        url = self.url
-        readme = self.readme
-
-        url = url.replace(".git", "")
-        url = url.replace("https://github.com",
-                          "https://raw.githubusercontent.com")
-
-        if url[-1] != "/":
-            url += "/"
-
-        url += "master/"
-
-        readme = readme.replace('src="', f'src="{url}')
-
-        readme = readme.split("(")
-
-        for i in range(0, len(readme)-1):
-            if(readme[i].endswith("]") and not readme[i+1].startswith("https://")):
-                readme[i+1] = ''.join([url, readme[i+1]])
-
-        readme = "(".join(readme)
-
-        self.readme = readme
 
 
 def main():

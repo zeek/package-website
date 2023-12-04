@@ -5,6 +5,9 @@ import os
 def bias(rankings: dict, query: str):
     new_list = []
 
+    if(rankings is None or query is None):
+        return None
+
     for item in rankings.items():
         if query in item[0].split(".")[0]:
             new_item = (item[0], item[1] + 3.0)
@@ -54,18 +57,27 @@ def get_idfs_helper(documents: [], term: str) -> int:
 
     return ln(((len(documents) - document_frequency + 0.5) / (document_frequency + 0.5)) + 1)
 
+
 def get_lower_bound(rankings: list) -> int:
+
+    if rankings is None:
+        return None
 
     index = 0
     min_val = min(set(x[1] for x in rankings))
     while rankings[index][1] > min_val:
         index += 1
 
-    return index - 1
+    return index
+
 
 def rank(documents: [], query: str) -> []:
     scores = []
     query = query.lower().split()
+
+    if documents is None:
+        raise TypeError
+
     idfs = get_idfs(documents, query)
     avgdl = get_avgdl(documents)
 

@@ -2,9 +2,10 @@ import sys
 import os
 import pytest
 import pickle
-sys.path.insert(0, '..')
-
 from app.api.search import search as s
+sys.path.insert(0, 'tests')
+
+
 
 
 class TestRank:

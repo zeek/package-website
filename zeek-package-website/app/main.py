@@ -10,6 +10,7 @@ from app.api.update import update
 
 import markdown
 import mistune
+import pycmarkgfm
 
 app = FastAPI()
 templates = Jinja2Templates(directory="templates")
@@ -19,7 +20,7 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 @app.get("/", response_class=HTMLResponse)
 async def home(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
-  
+
 
 @app.get("/about", response_class=HTMLResponse)
 async def about(request: Request):
@@ -47,7 +48,7 @@ async def packages(request: Request):
 async def package(request: Request, package_name: str):
     result = p.get_info(package_name + ".json")
     if result is not None:
-        readme = mistune.html(result["readme"])
+        readme = pycmarkgfm.gfm_to_html(result["readme"])
     else:
         readme = "<p>This package does not appear to have a README</p>"
     data = {

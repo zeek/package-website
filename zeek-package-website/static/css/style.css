@@ -95,11 +95,12 @@ h2 {
 .packages-container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content:space-between;
 }
 
 .package-group {
-    flex-direction: row;
+    display:flex;
+    flex-direction: row; 
 }
 
 .package-text {
@@ -128,24 +129,20 @@ h2 {
     border-radius: 6px;
     width: 80%;
 }
-
-.package-left-container {
-    width: 40%;
-}
-
-.package-right-container {
-    width: 40%;
+.package-left-container,
+.package-right-container{
+    width: 30%;
 }
 
 .readme-container {
     background-color: #FFFFFF;
     border-radius: 5px;
-    margin: 10px 152px auto auto;
+    margin: 10px auto auto ;
     padding: 6px;
-    width: 45%;
     list-style-position: inside;
-    display:inline;
     text-align: left;
+    margin-inline:revert;
+    width:50%;
 }
 
 .readme-container img {
@@ -160,14 +157,12 @@ h2 {
 .small-card {
     background-color: #FFFFFF;
     border-radius: 6px;
-    margin: 10px -30px auto auto; 
+    margin: 10px auto auto;
     padding: 6px;
-    min-height: 50px;
-    width: 80%;
-    float: inline-end;
-    border-radius: 6px;
+    border-radius: 6px;    
+    width:90%;
+    margin-inline-start:inherit;
 }
-
 
 /* Footer Styling  */
 footer {

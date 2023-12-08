@@ -95,12 +95,11 @@ h2 {
 .packages-container {
     display: flex;
     flex-direction: column;
-    justify-content:space-between;
+    justify-content:center;
 }
 
 .package-group {
-    display:flex;
-    flex-direction: row; 
+    flex-direction: row;
 }
 
 .package-text {

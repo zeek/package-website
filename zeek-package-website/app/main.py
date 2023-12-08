@@ -8,9 +8,7 @@ from app.api.package import package as p
 from app.api.search import search as s
 from app.api.update import update
 
-import markdown
-import mistune
-import pycmarkgfm
+from pycmarkgfm import gfm_to_html
 
 app = FastAPI()
 templates = Jinja2Templates(directory="templates")
@@ -48,7 +46,7 @@ async def packages(request: Request):
 async def package(request: Request, package_name: str):
     result = p.get_info(package_name + ".json")
     if result is not None:
-        readme = pycmarkgfm.gfm_to_html(result["readme"])
+        readme = gfm_to_html(result["readme"])
     else:
         readme = "<p>This package does not appear to have a README</p>"
     data = {

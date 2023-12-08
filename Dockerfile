@@ -12,4 +12,4 @@ RUN cd ~/ && git clone https://github.com/zeek/package-website.git
 RUN python3 -m pip install --upgrade pip
 
 RUN cd ~/package-website \
-&& pip install -r requirements.txt
+&& python3 -m pip install -r requirements.txt

@@ -1,10 +1,11 @@
 version: '3'
 services:
-    website: 
+    website:
+        build:
+            context: .
         container_name: website
         image: zeek_website
         ports:
           - 9000:80
         stdin_open: true
         tty: true
-        command: "bash -c \"cd ~/package-website/zeek-package-website && uvicorn app.main:app --host 0.0.0.0 --reload --timeout-keep-alive=65 --port 80\""

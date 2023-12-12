@@ -33,6 +33,9 @@ def load_packages() -> []:
 def find_missing(package: dict) -> []:
     missing = []
 
+    if(package is None):
+        return None
+
     for key in package.keys():
         if package[key] is None and key in fields.keys():
             missing.append(key)
@@ -41,6 +44,9 @@ def find_missing(package: dict) -> []:
 
 
 def get_field(readme: str, field: str) -> str:
+
+    if readme is None or field is None:
+        return None
 
     search_term = f"{fields[field]}"
 

@@ -11,3 +11,4 @@ jinja2
 fastapi_utils
 pycmarkgfm
 pytest
+requests

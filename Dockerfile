@@ -1,15 +1,18 @@
 FROM ubuntu
 
-RUN apt update
-RUN apt -y upgrade
-RUN apt install -y wget git vim python3
+RUN apt -q update \
+    && apt install -q -y --no-install-recommends \
+        python3 \
+        python3-pip \
+        vim \
+        wget \
+ && apt clean \
+ && rm -rf /var/lib/apt/lists/*
 
-RUN cd ~/ && wget https://bootstrap.pypa.io/get-pip.py \
-&& python3 get-pip.py && rm get-pip.py
+COPY zeek-package-website /opt/zeek-package-website/
+COPY requirements.txt .
 
-RUN cd ~/ && git clone https://github.com/zeek/package-website.git
+RUN pip install -r requirements.txt
 
-RUN python3 -m pip install --upgrade pip
-
-RUN cd ~/package-website \
-&& python3 -m pip install -r requirements.txt
+WORKDIR /opt/zeek-package-website
+ENTRYPOINT uvicorn app.main:app --host 0.0.0.0 --reload --port 80

@@ -117,8 +117,6 @@ class Parse(object):
         @param header: The section header to search for the author/credits field.
         @return: The author/credits value found in the header, or None if not found.
         """
-        # generic regular expression
-        reg = (r"^{text}\s*=\s*(.+)", text)
         same_match = re.search(rf"^{text}\s*=\s*(.+)", header, flags=re.MULTILINE)
 
         if same_match:

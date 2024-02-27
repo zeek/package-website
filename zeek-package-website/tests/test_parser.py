@@ -1,6 +1,3 @@
-import os
-import json
-import pytest
 from app.api.parser import Parse
 
 sample_file = "tests/sample1.meta"
@@ -11,7 +8,7 @@ def test_pkg_data_a():
     Some simple assertions
     """
     parser = Parse(sample_file)
-    result = parser.parse_data()
+    parser.parse_data()
 
     # test package from sample1.meta
     pkg1 = parser.pkg_dict["[0xxon/cve-2020-13777]"]

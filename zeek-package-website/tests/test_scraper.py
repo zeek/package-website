@@ -1,6 +1,4 @@
-import sys
 import os
-import pytest
 import json
 from app.api import readme_scraper as s
 

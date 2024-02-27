@@ -7,7 +7,7 @@ sample_file = 'tests/sample1.meta'
 
 def test_pkg_data_a():
     '''
-    Some simple assertions 
+    Some simple assertions
     '''
     parser = Parse(sample_file)
     result = parser.parse_data()
@@ -60,5 +60,3 @@ def test_get_next():
     header = "[0xxon/cve-2020-13777]\ndepends =\n    zkg >=2.0\n    zeek >=4.0.0"
     result = parser.get_next("depends", header)
     assert result == ["zkg >=2.0", "zeek >=4.0.0"]
-
-

@@ -1,6 +1,6 @@
 version: '3'
 services:
-    website: 
+    website:
         container_name: website
         image: zeek_website
         ports:

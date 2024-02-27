@@ -35,10 +35,10 @@ async def packages(request: Request):
             sorted_packages[starting_char] = []
         sorted_packages[starting_char].append(filename)
     sorted_packages = sorted(sorted_packages.items(), key=lambda x: x[0])
-    data = {
-        "packages": sorted_packages
-    }
-    return templates.TemplateResponse("packages.html", {"request": request, "data": data})
+    data = {"packages": sorted_packages}
+    return templates.TemplateResponse(
+        "packages.html", {"request": request, "data": data}
+    )
 
 
 # example created a dynamic page based on page name, this can be modified for our packages
@@ -52,11 +52,13 @@ async def package(request: Request, package_name: str):
     data = {
         "package_name": package_name,
         "package_info": result,
-        "package_readme": readme
+        "package_readme": readme,
     }
     # send users back to home page if package does not exist
     if result is not None:
-        return templates.TemplateResponse("package-info.html", {"request": request, "data": data})
+        return templates.TemplateResponse(
+            "package-info.html", {"request": request, "data": data}
+        )
     else:
         return templates.TemplateResponse("index.html", {"request": request})
 
@@ -64,10 +66,7 @@ async def package(request: Request, package_name: str):
 @app.post("/search", response_class=HTMLResponse)
 async def search(request: Request, query: str = Form(...)):
     results = s.search(query)
-    data = {
-        "query": query,
-        "results": results
-    }
+    data = {"query": query, "results": results}
     return templates.TemplateResponse("search.html", {"request": request, "data": data})
 
 

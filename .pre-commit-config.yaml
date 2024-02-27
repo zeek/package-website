@@ -1,19 +1,29 @@
 # See https://pre-commit.com for more information
 # See https://pre-commit.com/hooks.html for more hooks
 repos:
-- repo: https://github.com/pre-commit/pre-commit-hooks
-  rev: v4.4.0
-  hooks:
-  - id: trailing-whitespace
-    exclude: testing/baselines
-  - id: end-of-file-fixer
-    exclude: testing/baselines
-  - id: check-yaml
-  - id: check-added-large-files
-- repo: https://github.com/astral-sh/ruff-pre-commit
-  rev: v0.2.2
-  hooks:
-  - id: ruff
-  - id: ruff-format
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+      - id: trailing-whitespace
+        exclude: testing/baselines
+      - id: end-of-file-fixer
+        exclude: testing/baselines
+      - id: check-yaml
+      - id: check-added-large-files
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.2.2
+    hooks:
+      - id: ruff
+        args: [--fix]
+      - id: ruff-format
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: v3.0.3
+    hooks:
+      - id: prettier
+        # prettier has trouble parsing our the Jinja templates. I looked into adding
+        # https://github.com/davidodenwald/prettier-plugin-jinja-template
+        # as an `additional_dependencies`, but couldn't make it work even with
+        # https://github.com/prettier/plugin-xml/issues/17#issuecomment-555445966.
+        exclude: zeek-package-website/templates/.*
 
-exclude: zeek-package-website/app/api/aggregate.meta|zeek-package-website/app/api/search/json_files.*
+exclude: zeek-package-website/app/api/aggregate.meta|zeek-package-website/app/api/search/json_files.*|zeek-package-website/tests/sample.json

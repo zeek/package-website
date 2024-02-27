@@ -5,26 +5,26 @@ on:
   push:
     branches:
       # any branch
-      - '**'
+      - "**"
 
 jobs:
   test:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.10'
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
 
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
 
-    - name: Run Unit Tests
-      run: |
-        cd zeek-package-website && pytest -s --showlocals tests/test_parser.py tests/test_search.py tests/test_scraper.py
+      - name: Run Unit Tests
+        run: |
+          cd zeek-package-website && pytest -s --showlocals tests/test_parser.py tests/test_search.py tests/test_scraper.py

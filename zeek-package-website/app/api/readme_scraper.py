@@ -3,8 +3,11 @@ import os
 import json
 
 
-fields = {"test_cmd": "test command", "build_cmd": "build command",
-          "depends": "dependencies"}
+fields = {
+    "test_cmd": "test command",
+    "build_cmd": "build command",
+    "depends": "dependencies",
+}
 
 
 def load_packages() -> []:
@@ -22,18 +25,18 @@ def load_packages() -> []:
                         item = get_field(package_json["readme"], field)
                         if item is not None:
                             package_json[field] = item
-                    package_json["readme"] = get_images(package_json["readme"],
-                                                        package_json["url"])
+                    package_json["readme"] = get_images(
+                        package_json["readme"], package_json["url"]
+                    )
 
-            with open(f"{filepath}/{filename}", "w+",
-                      encoding="utf-8") as file:
+            with open(f"{filepath}/{filename}", "w+", encoding="utf-8") as file:
                 json.dump(package_json, file)
 
 
 def find_missing(package: dict) -> []:
     missing = []
 
-    if(package is None):
+    if package is None:
         return None
 
     for key in package.keys():
@@ -44,17 +47,16 @@ def find_missing(package: dict) -> []:
 
 
 def get_field(readme: str, field: str) -> str:
-
     if readme is None or field is None:
         return None
 
     search_term = f"{fields[field]}"
 
-    field = re.search(f'(?<=# {search_term})(.*)(?=\n)', readme.lower())
+    field = re.search(f"(?<=# {search_term})(.*)(?=\n)", readme.lower())
     term = None
 
     if field is not None:
-        term = re.search(r'(?<=`)(.*)(?=`)', field.group())
+        term = re.search(r"(?<=`)(.*)(?=`)", field.group())
 
         if term is not None:
             return term.group()
@@ -66,8 +68,7 @@ def get_field(readme: str, field: str) -> str:
 
 def get_images(readme, url):
     url = url.replace(".git", "")
-    url = url.replace("https://github.com",
-                      "https://raw.githubusercontent.com")
+    url = url.replace("https://github.com", "https://raw.githubusercontent.com")
 
     if url[-1] != "/":
         url += "/"
@@ -78,9 +79,9 @@ def get_images(readme, url):
 
     readme = readme.split("(")
 
-    for i in range(0, len(readme)-1):
-        if(readme[i].endswith("]") and not readme[i+1].startswith("https://")):
-            readme[i+1] = ''.join([url, readme[i+1]])
+    for i in range(0, len(readme) - 1):
+        if readme[i].endswith("]") and not readme[i + 1].startswith("https://"):
+            readme[i + 1] = "".join([url, readme[i + 1]])
 
     readme = "(".join(readme)
 

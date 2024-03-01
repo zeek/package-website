@@ -6,6 +6,7 @@ import requests
 import json
 import os
 
+
 class Parse(object):
     def __init__(self, file):
         """
@@ -14,27 +15,27 @@ class Parse(object):
         @param file: The name of the file to be parsed.
         @return: None
         """
-        with open(file, 'r') as f:
+        with open(file, "r") as f:
             self.contents = f.read()
 
-        self.section_count = None   # number of packages
+        self.section_count = None  # number of packages
         self.section_header = None  # pkg names
-        self.author = None          # pkg author/credits
-        self.description = None     # pkg description
-        self.tags = None            # pkg tags
-        self.version = None         # pkg version
-        self.depends = None         # pkg dependencies
-        self.ext_depends = None     # pgk external dependencies
-        self.test_cmd = None        # pkg test commands
-        self.build_cmd = None       # pkg build commands
-        self.url = None             # pkg repo URL
-        self.summary = None         # pkg summary
-        self.script_dir = None      # pkg script directory
-        self.plugin_dir = None      # pkg plugin directory
+        self.author = None  # pkg author/credits
+        self.description = None  # pkg description
+        self.tags = None  # pkg tags
+        self.version = None  # pkg version
+        self.depends = None  # pkg dependencies
+        self.ext_depends = None  # pgk external dependencies
+        self.test_cmd = None  # pkg test commands
+        self.build_cmd = None  # pkg build commands
+        self.url = None  # pkg repo URL
+        self.summary = None  # pkg summary
+        self.script_dir = None  # pkg script directory
+        self.plugin_dir = None  # pkg plugin directory
         # TODO: implement REGEX method for this
-        self.user_vars = None       # pkg user variables
-        self.readme = None          # readmes
-        self.pkg_dict = {}          # store the packages as a dict
+        self.user_vars = None  # pkg user variables
+        self.readme = None  # readmes
+        self.pkg_dict = {}  # store the packages as a dict
 
     def parse_data(self) -> dict:
         """
@@ -55,41 +56,39 @@ class Parse(object):
         # loop over each header and extract the desired fields
         for header in headers:
             # extract the section header
-            self.section_header = re.search(
-                r'\[[^/^].*?\/[^[]*?\]', header).group(0)
+            self.section_header = re.search(r"\[[^/^].*?\/[^[]*?\]", header).group(0)
 
             # extract our desired fields
             # TODO: pass in header + text to look for
-            self.author         = self.get_line("credits", header)
-            self.description    = self.get_line("description", header)
-            self.tags           = self.get_line("tags", header)
-            self.version        = self.get_line("version", header)
-            self.depends        = self.get_next("depends", header)
-            self.test_cmd       = self.get_line("test_command", header)
-            self.build_cmd      = self.get_line("build_command", header)
-            self.url            = self.get_line("url", header)
-            self.summary        = self.get_line("summary", header)
-            self.script_dir     = self.get_line("script_dir", header)
-            self.plugin_dir     = self.get_line("plugin_dir", header)
-            self.readme         = self.get_readme()
+            self.author = self.get_line("credits", header)
+            self.description = self.get_line("description", header)
+            self.tags = self.get_line("tags", header)
+            self.version = self.get_line("version", header)
+            self.depends = self.get_next("depends", header)
+            self.test_cmd = self.get_line("test_command", header)
+            self.build_cmd = self.get_line("build_command", header)
+            self.url = self.get_line("url", header)
+            self.summary = self.get_line("summary", header)
+            self.script_dir = self.get_line("script_dir", header)
+            self.plugin_dir = self.get_line("plugin_dir", header)
+            self.readme = self.get_readme()
 
             if self.readme is not None and self.url is not None:
                 self.get_images()
 
             self.pkg_dict[self.section_header] = {
-                "description"   : self.description,
-                "tags"          : self.tags,
-                "version"       : self.version,
-                "depends"       : self.depends,
-                "test_cmd"      : self.test_cmd,
-                "build_cmd"     : self.build_cmd,
-                "url"           : self.url,
-                "summary"       : self.summary,
-                "script_dir"    : self.script_dir,
-                "plugin_dir"    : self.plugin_dir,
-                "readme"        : self.readme
+                "description": self.description,
+                "tags": self.tags,
+                "version": self.version,
+                "depends": self.depends,
+                "test_cmd": self.test_cmd,
+                "build_cmd": self.build_cmd,
+                "url": self.url,
+                "summary": self.summary,
+                "script_dir": self.script_dir,
+                "plugin_dir": self.plugin_dir,
+                "readme": self.readme,
             }
-
 
             # section_count to keep track of # of packages
             self.section_count += 1
@@ -105,9 +104,8 @@ class Parse(object):
         @return: section headers found in the file contents as strings.
         """
         headers = re.findall(
-            r'\[[^/^][^[]*?\/[^[]*?\][^[]*',
-            self.contents,
-            flags=re.DOTALL)
+            r"\[[^/^][^[]*?\/[^[]*?\][^[]*", self.contents, flags=re.DOTALL
+        )
 
         return headers
 
@@ -119,12 +117,7 @@ class Parse(object):
         @param header: The section header to search for the author/credits field.
         @return: The author/credits value found in the header, or None if not found.
         """
-        # generic regular expression
-        reg = (r'^{text}\s*=\s*(.+)', text)
-        same_match = re.search(
-            rf'^{text}\s*=\s*(.+)',
-            header,
-            flags=re.MULTILINE)
+        same_match = re.search(rf"^{text}\s*=\s*(.+)", header, flags=re.MULTILINE)
 
         if same_match:
             same_line = same_match.group(1)
@@ -141,14 +134,13 @@ class Parse(object):
         @return The list of dependencies, or None if not found.
         """
         next_match = re.search(
-            rf'^{text}\s*=\s*(.*(?:\n\s+.*)*)',
-            header,
-            flags=re.MULTILINE)
+            rf"^{text}\s*=\s*(.*(?:\n\s+.*)*)", header, flags=re.MULTILINE
+        )
 
         if next_match:
-            next_line = next_match.group(1).strip().split('\n')
+            next_line = next_match.group(1).strip().split("\n")
             # remove tabs and leading spaces
-            next_line = [ln.replace('\t', '').lstrip() for ln in next_line]
+            next_line = [ln.replace("\t", "").lstrip() for ln in next_line]
         else:
             next_line = None
 
@@ -177,16 +169,15 @@ class Parse(object):
             print()
 
     def dump(self):
-
         for item in self.pkg_dict.items():
             name = item[0].split("/")[1]
             name = name.strip("]")
             project_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
             json_files_dir = os.path.join(project_dir, "api", "search", "json_files")
-            with open(f"{json_files_dir}/{name}.json", "w+",
-                      encoding="utf-8") as outfile:
+            with open(
+                f"{json_files_dir}/{name}.json", "w+", encoding="utf-8"
+            ) as outfile:
                 outfile.write(json.dumps(item[1]))
-
 
     def get_readme(self) -> str:
         """
@@ -206,8 +197,17 @@ class Parse(object):
         request_url = f"https://raw.githubusercontent.com/{name}/master"
 
         # if packages have other forms of readme add to this list
-        filenames = ["README.md", "readme.md", "README", "readme", "Readme.md",
-                     "Readme", "README.rst", "Readme.rst", "readme.rst"]
+        filenames = [
+            "README.md",
+            "readme.md",
+            "README",
+            "readme",
+            "Readme.md",
+            "Readme",
+            "README.rst",
+            "Readme.rst",
+            "readme.rst",
+        ]
         counter = 1
 
         readme_ext = filenames[0]
@@ -232,8 +232,7 @@ class Parse(object):
         readme = self.readme
 
         url = url.replace(".git", "")
-        url = url.replace("https://github.com",
-                          "https://raw.githubusercontent.com")
+        url = url.replace("https://github.com", "https://raw.githubusercontent.com")
 
         if url[-1] != "/":
             url += "/"
@@ -244,9 +243,9 @@ class Parse(object):
 
         readme = readme.split("(")
 
-        for i in range(0, len(readme)-1):
-            if(readme[i].endswith("]") and not readme[i+1].startswith("https://")):
-                readme[i+1] = ''.join([url, readme[i+1]])
+        for i in range(0, len(readme) - 1):
+            if readme[i].endswith("]") and not readme[i + 1].startswith("https://"):
+                readme[i + 1] = "".join([url, readme[i + 1]])
 
         readme = "(".join(readme)
 
@@ -254,11 +253,11 @@ class Parse(object):
 
 
 def main():
-    file = 'aggregate.meta'
+    file = "aggregate.meta"
     # parse the file for all of its fields
     parser = Parse(file)
     # print the parsed data
-    #parser.print_data()
+    # parser.print_data()
     parser.parse_data()
     parser.dump()
 
@@ -280,15 +279,16 @@ def main():
     """
 
     # get a specific package NOTE: be sure to include outside brackets
-    #pkg = parser.pkg_dict["[corelight/callstranger-detector]"]
-    #print(pkg)
+    # pkg = parser.pkg_dict["[corelight/callstranger-detector]"]
+    # print(pkg)
 
     # print all packages as dicts
-    for key, val, in parser.pkg_dict.items():
+    for (
+        key,
+        val,
+    ) in parser.pkg_dict.items():
         print(key, val)
 
 
-
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

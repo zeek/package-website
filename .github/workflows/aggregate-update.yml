@@ -2,7 +2,7 @@ name: Update aggregate data
 
 on:
   repository_dispatch:
-    types: [ "rebuild_data" ]
+    types: ["rebuild_data"]
 
 jobs:
   update_metadata:

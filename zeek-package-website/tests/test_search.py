@@ -1,4 +1,3 @@
-import sys
 import os
 import pytest
 import pickle
@@ -6,7 +5,6 @@ from app.api.search import search as s
 
 
 class TestRank:
-
     query = "http"
     documents = []
     project_dir = os.path.dirname(os.path.abspath(__file__))
@@ -30,7 +28,9 @@ class TestRank:
             s.rank(None, self.query)
 
     def test_rank_correct(self):
-        assert sorted(self.rankings) == pytest.approx(sorted(self.saved_rankings), rel=1e-1)
+        assert sorted(self.rankings) == pytest.approx(
+            sorted(self.saved_rankings), rel=1e-1
+        )
 
     def test_rank_type(self):
         print(type(self.rankings))
@@ -38,47 +38,40 @@ class TestRank:
 
 
 class TestBias:
-
     input_dict = {"hello.json": 0, "hello.git": 0, "hello": 0}
 
     def test_bias_correct_json(self):
-        desired = [('hello.json', 0), ('hello.git', 0), ('hello', 0)]
+        desired = [("hello.json", 0), ("hello.git", 0), ("hello", 0)]
 
         output = s.bias(self.input_dict, "json")
 
         assert output == desired
 
     def test_bias_correct_git(self):
-
-        desired = [('hello.json', 0), ('hello.git', 0), ('hello', 0)]
+        desired = [("hello.json", 0), ("hello.git", 0), ("hello", 0)]
 
         output = s.bias(self.input_dict, "git")
 
         assert output == desired
 
     def test_bias_correct(self):
-
-        desired = [('hello.json', 3), ('hello.git', 3), ('hello', 3)]
+        desired = [("hello.json", 3), ("hello.git", 3), ("hello", 3)]
 
         output = s.bias(self.input_dict, "hello")
 
         assert output == desired
 
     def test_bias_none_rankings(self):
-
         assert s.bias(None, "hello") is None
 
     def test_bias_none_query(self):
-
         assert s.bias(self.input_dict, None) is None
 
 
 class TestCutoff:
-
-    input_list = [('hello.json', 3.12), ('hello.git', 0.22), ('hello', -.2)]
+    input_list = [("hello.json", 3.12), ("hello.git", 0.22), ("hello", -0.2)]
 
     def test_cutoff_correct(self):
-
         desired = self.input_list[:-1]
 
         output = s.get_lower_bound(self.input_list)
@@ -86,5 +79,4 @@ class TestCutoff:
         assert desired == self.input_list[0:output]
 
     def test_cutoff_none(self):
-
         assert s.get_lower_bound(None) is None

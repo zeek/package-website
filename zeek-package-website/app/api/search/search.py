@@ -5,7 +5,7 @@ import os
 def bias(rankings: dict, query: str):
     new_list = []
 
-    if(rankings is None or query is None):
+    if rankings is None or query is None:
         return None
 
     for item in rankings.items():
@@ -28,11 +28,12 @@ def get_avgdl(documents: []) -> int:
 
 
 def get_frequency(document: str, term: str) -> int:
-
     frequency = 0
 
     for word in document:
-        if term in word and not (word.startswith("http://") or word.startswith("https://")):
+        if term in word and not (
+            word.startswith("http://") or word.startswith("https://")
+        ):
             frequency += 1
 
     return frequency
@@ -55,11 +56,12 @@ def get_idfs_helper(documents: [], term: str) -> int:
             if term in word.lower() and not ("http://" in word or "https://" in word):
                 document_frequency += 1
 
-    return ln(((len(documents) - document_frequency + 0.5) / (document_frequency + 0.5)) + 1)
+    return ln(
+        ((len(documents) - document_frequency + 0.5) / (document_frequency + 0.5)) + 1
+    )
 
 
 def get_lower_bound(rankings: list) -> int:
-
     if rankings is None:
         return None
 
@@ -97,13 +99,15 @@ def score(document: [], query: [], avgdl: int, idfs: dict) -> int:
 
 
 def score_helper(document: str, term: str, avgdl: int, idfs: dict) -> int:
-
     frequency = get_frequency(document, term)
     idf = idfs.get(term)
     k1 = 1.0  # k1 is a free variable anywhere from 1.2 to 2
     b = 0.75  # b is a free variable that is commonly 0.75
     delta = 1.0  # delta is a free variable that is commonly 1.0
-    score = ((frequency * (k1 + 1)) / (frequency + k1 * (1 - b + b * (len(document) / avgdl)))) + delta
+    score = (
+        (frequency * (k1 + 1))
+        / (frequency + k1 * (1 - b + b * (len(document) / avgdl)))
+    ) + delta
 
     return idf * score
 
@@ -149,7 +153,7 @@ def search(query: str) -> list:
 
     rankings = sorted(rankings, key=lambda item: item[1], reverse=True)
 
-    return rankings[0:get_lower_bound(rankings)]
+    return rankings[0 : get_lower_bound(rankings)]
 
 
 def main():

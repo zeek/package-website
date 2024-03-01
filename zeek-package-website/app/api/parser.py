@@ -1,6 +1,7 @@
 """
 Parser utility for scraping values from aggragate.meta
 """
+
 import re
 import requests
 import json
